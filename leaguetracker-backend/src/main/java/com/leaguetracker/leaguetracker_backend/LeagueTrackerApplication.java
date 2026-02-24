@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LeagueManagerApplication {
+public class LeagueTrackerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LeagueManagerApplication.class, args);
+		SpringApplication.run(LeagueTrackerApplication.class, args);
 	}
 
 }

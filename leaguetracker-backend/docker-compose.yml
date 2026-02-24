@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_leaguetracker
+    restart: always
+    environment:
+      POSTGRES_USER: leaguetracker_admin
+      POSTGRES_PASSWORD: leaguetracker_password
+      POSTGRES_DB: league_tracker
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: spring_leaguetracker_api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/league_tracker
+      SPRING_DATASOURCE_USERNAME: leaguetracker_admin
+      SPRING_DATASOURCE_PASSWORD: leaguetracker_password
+
+volumes:
+  pgdata:
