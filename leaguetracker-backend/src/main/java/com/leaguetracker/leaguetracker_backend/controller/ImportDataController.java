@@ -33,23 +33,3 @@ public class ImportDataController {
     }
   }
 }
-// public class ImportDataController {
-
-// @Autowired
-// private PlayerImportService playerImportService;
-
-// @PostMapping("/players")
-// public ResponseEntity<String> uploadCsv() {
-// try {
-// System.out.println("Starting player data import...");
-// InputStream is =
-// getClass().getResourceAsStream("/player-data-full-2025-june.csv");
-// playerImportService.importCsv(is);
-// return ResponseEntity.ok("Player data imported successfully.");
-// } catch (Exception e) {
-// return ResponseEntity.status(500).body("Error importing player data: " +
-// e.getMessage());
-// }
-// }
-
-// }
