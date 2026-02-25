@@ -2,6 +2,9 @@ package com.leaguetracker.leaguetracker_backend.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.data.annotation.CreatedDate;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,7 +36,16 @@ public class Career {
 
   private BigDecimal budget;
 
+  @CreatedDate
+  @Column(nullable = false, updatable = false)
   private LocalDate startDate;
 
-  private Long externalId;
+  private LocalDate currentSeason;
+
+  @OneToMany(mappedBy = "career", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<CareerPlayer> squad;
+
+  public void advanceSeason() {
+    this.currentSeason = this.currentSeason.plusYears(1);
+  }
 }

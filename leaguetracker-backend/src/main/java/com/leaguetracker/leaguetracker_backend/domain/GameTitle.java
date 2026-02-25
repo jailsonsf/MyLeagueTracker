@@ -8,9 +8,9 @@ public enum GameTitle {
   EA_FC_25("EA FC 25"),
   EA_FC_26("EA FC 26");
 
-  private final String displayGameName;
+  private final String gameName;
 
-  GameTitle(String displayGameName) {
-    this.displayGameName = displayGameName;
+  GameTitle(String gameName) {
+    this.gameName = gameName;
   }
 }
