@@ -28,7 +28,7 @@ public class CareerPlayer {
 
   @Enumerated(EnumType.STRING)
   @Column(name = "player_role")
-  private Role role;
+  private PlayerRole role;
 
   public int getAgeInCareer() {
     if (player.getDateOfBirth() == null || career.getStartDate() == null) {
