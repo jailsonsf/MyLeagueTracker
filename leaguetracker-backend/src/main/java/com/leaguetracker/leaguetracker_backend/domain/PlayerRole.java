@@ -3,7 +3,7 @@ package com.leaguetracker.leaguetracker_backend.domain;
 import lombok.Getter;
 
 @Getter
-public enum Role {
+public enum PlayerRole {
   Crucial("Crucial"),
   Important("Importante"),
   Sporadic("Esporádico"),
@@ -12,7 +12,7 @@ public enum Role {
 
   private final String roleName;
 
-  Role(String roleName) {
+  PlayerRole(String roleName) {
     this.roleName = roleName;
   }
 }
