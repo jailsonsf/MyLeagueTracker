@@ -24,8 +24,9 @@ import lombok.Setter;
 @Builder
 public class User implements UserDetails {
 
-  public User(String username, String password, UserRole role) {
+  public User(String username, String email, String password, UserRole role) {
     this.username = username;
+    this.email = email;
     this.password = password;
     this.role = role;
   }
@@ -33,7 +34,13 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(unique = true, nullable = false)
   private String username;
+
+  @Column(unique = true, nullable = false)
+  private String email;
+
   private String password;
 
   @Enumerated(EnumType.STRING)

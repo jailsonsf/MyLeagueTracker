@@ -38,7 +38,7 @@ public class AuthenticationController {
 
   @PostMapping("/login")
   public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {
-    var usernamePassword = new UsernamePasswordAuthenticationToken(data.username(), data.password());
+    var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
 
     var auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -48,16 +48,17 @@ public class AuthenticationController {
   }
 
   @PostMapping("/register")
-  public ResponseEntity<Void> register(@RequestBody @Valid RegisterDTO data) {
-    if (this.userRepository.findByUsername(data.username()).isPresent()) {
-      return ResponseEntity.badRequest().build();
+  public ResponseEntity<String> register(@RequestBody @Valid RegisterDTO data) {
+    if (this.userRepository.findByUsername(data.username()).isPresent()
+        || this.userRepository.findByEmail(data.email()).isPresent()) {
+      return ResponseEntity.badRequest().body("Erro: Username ou email já estão em uso");
     }
 
     String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-    User user = new User(data.username(), encryptedPassword, UserRole.USER);
+    User user = new User(data.username(), data.email(), encryptedPassword, UserRole.USER);
     this.userRepository.save(user);
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.ok().body("Usuário registrado com sucesso!");
   }
 
   @PatchMapping("/admin/update-role")
