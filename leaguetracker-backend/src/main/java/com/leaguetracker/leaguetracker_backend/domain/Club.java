@@ -15,14 +15,18 @@ import lombok.*;
 public class Club {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "club_seq")
+  @SequenceGenerator(name = "club_seq", sequenceName = "club_id_seq", allocationSize = 50)
   private Long id;
-
   private Long externalId;
+
   private String name;
-  private String leagueName;
-  private Long leagueId;
-  private String logoUrl;
+
+  private int clubRating;
+
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "league_id")
+  private League league;
 
   @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Player> players;
