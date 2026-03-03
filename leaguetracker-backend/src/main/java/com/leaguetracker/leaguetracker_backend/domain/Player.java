@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import com.leaguetracker.leaguetracker_backend.service.MoneyConverter;
+import com.leaguetracker.leaguetracker_backend.service.PositionAttributeConverter;
 import com.leaguetracker.leaguetracker_backend.service.PositionConverter;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
@@ -22,7 +23,8 @@ import lombok.*;
 public class Player {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_seq")
+  @SequenceGenerator(name = "player_seq", sequenceName = "player_id_seq", allocationSize = 50)
   private Long id;
 
   @CsvBindByName(column = "player_id")
@@ -56,9 +58,8 @@ public class Player {
   @CsvBindByName(column = "weight_kg")
   private int weightKg;
 
-  @ElementCollection(targetClass = Position.class)
-  @CollectionTable(name = "player_positions", joinColumns = @JoinColumn(name = "player_id"))
-  @Enumerated(EnumType.STRING)
+  @Column(name = "positions")
+  @Convert(converter = PositionAttributeConverter.class)
   @CsvCustomBindByName(column = "positions", converter = PositionConverter.class)
   private Set<Position> positions;
 
