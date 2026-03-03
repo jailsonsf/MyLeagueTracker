@@ -1,7 +1,5 @@
 package com.leaguetracker.leaguetracker_backend.domain;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +19,4 @@ public class League {
 
   private Long externalId;
   private String name;
-
-  @OneToMany(mappedBy = "league", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Club> clubs;
 }
