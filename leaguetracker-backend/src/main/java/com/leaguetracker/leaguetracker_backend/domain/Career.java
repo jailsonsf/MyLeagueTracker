@@ -49,7 +49,7 @@ public class Career {
   private LocalDate currentSeason;
 
   @OneToMany(mappedBy = "career", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<CareerPlayer> squad;
+  private List<CareerSquad> squad;
 
   public void advanceSeason() {
     this.currentSeason = this.currentSeason.plusYears(1);
