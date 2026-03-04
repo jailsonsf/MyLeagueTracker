@@ -14,7 +14,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "players")
+@Table(name = "players_catalog")
 @Getter
 @Setter
 @NoArgsConstructor
