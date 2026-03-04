@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.leaguetracker.leaguetracker_backend.service.LeagueImportService;
 import com.leaguetracker.leaguetracker_backend.service.PlayerImportService;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -17,8 +18,11 @@ public class ImportDataController {
   @Autowired
   private PlayerImportService playerImportService;
 
+  @Autowired
+  private LeagueImportService leagueImportService;
+
   @PostMapping("/players")
-  public ResponseEntity<String> uploadCsv(@RequestParam("file") MultipartFile file) {
+  public ResponseEntity<String> importPlayersCsv(@RequestParam("file") MultipartFile file) {
     if (file.isEmpty()) {
       return ResponseEntity.badRequest().body("Por favor, selecione um arquivo CSV para enviar.");
     }
@@ -29,5 +33,11 @@ public class ImportDataController {
     } catch (Exception e) {
       return ResponseEntity.status(500).body("Error importing player data: " + e.getMessage());
     }
+  }
+
+  @PostMapping("/leagues")
+  public ResponseEntity<String> importLeagues() {
+    leagueImportService.fetchLeagues();
+    return ResponseEntity.ok("League data imported successfully.");
   }
 }

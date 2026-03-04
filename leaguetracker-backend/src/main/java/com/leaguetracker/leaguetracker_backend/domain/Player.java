@@ -82,10 +82,4 @@ public class Player {
   @Transient
   @CsvBindByName(column = "club_rating")
   private Integer csvClubRating;
-  @Transient
-  @CsvBindByName(column = "club_league_id")
-  private Long csvLeagueId;
-  @Transient
-  @CsvBindByName(column = "club_league_name")
-  private String csvLeagueName;
 }

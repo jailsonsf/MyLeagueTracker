@@ -12,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.Club;
-import com.leaguetracker.leaguetracker_backend.domain.League;
 import com.leaguetracker.leaguetracker_backend.domain.Player;
 import com.leaguetracker.leaguetracker_backend.repository.ClubRepository;
-import com.leaguetracker.leaguetracker_backend.repository.LeagueRepository;
 import com.leaguetracker.leaguetracker_backend.repository.PlayerRepository;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -27,9 +25,6 @@ public class PlayerImportService {
 
   @Autowired
   private PlayerRepository playerRepository;
-
-  @Autowired
-  private LeagueRepository leagueRepository;
 
   @Autowired
   private ClubRepository clubRepository;
@@ -54,9 +49,6 @@ public class PlayerImportService {
           .stream()
           .collect(Collectors.toMap(Player::getExternalId, p -> p));
 
-      Map<Long, League> leagueMap = leagueRepository.findAll().stream()
-          .collect(Collectors.toMap(League::getExternalId, l -> l, (a, b) -> a));
-
       Map<Long, Club> clubMap = clubRepository.findAll().stream()
           .collect(Collectors.toMap(Club::getExternalId, c -> c, (a, b) -> a));
 
@@ -66,24 +58,14 @@ public class PlayerImportService {
           continue;
 
         Long clubId = player.getCsvClubId();
-        Long leagueId = player.getCsvLeagueId();
 
         if (clubId != null && clubId != 0) {
-          League league = leagueMap.computeIfAbsent(leagueId, id -> {
-            return leagueRepository.save(
-                League.builder()
-                    .externalId(id)
-                    .name(player.getCsvLeagueName())
-                    .build());
-          });
-
           Club club = clubMap.computeIfAbsent(clubId, id -> {
             return clubRepository.save(
                 Club.builder()
                     .externalId(id)
                     .name(player.getCsvClubName())
                     .clubRating(player.getCsvClubRating())
-                    .league(league)
                     .build());
           });
 

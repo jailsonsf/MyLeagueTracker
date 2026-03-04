@@ -24,10 +24,6 @@ public class Club {
 
   private int clubRating;
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "league_id")
-  private League league;
-
   @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Player> players;
 }
