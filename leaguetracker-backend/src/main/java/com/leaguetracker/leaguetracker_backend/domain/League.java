@@ -19,4 +19,10 @@ public class League {
 
   private Long externalId;
   private String name;
+  private String type;
+  private String logo;
+
+  private String countryName;
+  private String countryCode;
+  private String countryFlag;
 }
