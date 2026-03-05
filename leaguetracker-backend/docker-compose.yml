@@ -15,6 +15,9 @@ services:
   app:
     build: .
     container_name: spring_leaguetracker_api
+    working_dir: /app
+    volumes:
+      - .:/app
     ports:
       - "8080:8080"
     depends_on:
@@ -23,6 +26,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/league_tracker
       SPRING_DATASOURCE_USERNAME: leaguetracker_admin
       SPRING_DATASOURCE_PASSWORD: leaguetracker_password
+    command: ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.devtools.restart.enabled=true"
 
 volumes:
   pgdata:
