@@ -1,12 +1,21 @@
 package com.leaguetracker.leaguetracker_backend.dto;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Set;
+
+import com.leaguetracker.leaguetracker_backend.domain.Position;
 
 public record PlayerDTO(
     Long id,
-    String name,
+    Long externalId,
+    String fullName,
+    LocalDate dateOfBirth,
     int overall,
     int potential,
-    List<String> positions,
-    int age) {
+    Set<Position> positions,
+    String preferredFoot,
+    Long value,
+    Long wage,
+    int heightCm,
+    int weightKg) {
 }

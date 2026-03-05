@@ -32,6 +32,7 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
             .requestMatchers(HttpMethod.PATCH, "/auth/admin/update-role").hasRole("ADMIN")
             .requestMatchers("/api/import/**").hasRole("ADMIN")
+            .requestMatchers("/api/catalog/players/**").authenticated()
             .anyRequest().authenticated())
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
 
