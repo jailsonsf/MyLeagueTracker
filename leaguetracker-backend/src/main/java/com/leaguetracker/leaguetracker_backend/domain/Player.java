@@ -45,8 +45,9 @@ public class Player {
   @CsvCustomBindByName(column = "wage", converter = MoneyConverter.class)
   private Long wage;
 
+  @Enumerated(EnumType.STRING)
   @CsvBindByName(column = "preferred_foot")
-  private String preferredFoot;
+  private PreferredFoot preferredFoot;
 
   @CsvBindByName(column = "dob")
   @CsvDate("yyyy-MM-dd")
@@ -62,6 +63,10 @@ public class Player {
   @Convert(converter = PositionAttributeConverter.class)
   @CsvCustomBindByName(column = "positions", converter = PositionConverter.class)
   private Set<Position> positions;
+
+  @ManyToOne
+  @JoinColumn(name = "country_id")
+  private Country country;
 
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "club_id")
@@ -82,4 +87,7 @@ public class Player {
   @Transient
   @CsvBindByName(column = "club_rating")
   private Integer csvClubRating;
+  @Transient
+  @CsvBindByName(column = "country_name")
+  private String csvCountryName;
 }

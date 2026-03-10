@@ -2,7 +2,6 @@ package com.leaguetracker.leaguetracker_backend.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -48,8 +47,8 @@ public class Career {
 
   private LocalDate currentSeason;
 
-  @OneToMany(mappedBy = "career", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<CareerSquad> squad;
+  @OneToOne(mappedBy = "career", cascade = CascadeType.ALL)
+  private CareerSquad squad;
 
   public void advanceSeason() {
     this.currentSeason = this.currentSeason.plusYears(1);

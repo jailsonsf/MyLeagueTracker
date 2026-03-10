@@ -4,11 +4,11 @@ import lombok.Getter;
 
 @Getter
 public enum PlayerRole {
-  Crucial("Crucial"),
-  Important("Importante"),
-  Sporadic("Esporádico"),
-  Rotation("Rodicio"),
-  Prospect("Promessa");
+  CRUCIAL("Crucial"),
+  IMPORTANT("Importante"),
+  SPORADIC("Esporádico"),
+  ROTATION("Rodicio"),
+  PROSPECT("Promessa");
 
   private final String roleName;
 
