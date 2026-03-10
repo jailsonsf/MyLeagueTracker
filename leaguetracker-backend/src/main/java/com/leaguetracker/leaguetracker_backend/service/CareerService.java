@@ -6,11 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.Career;
+import com.leaguetracker.leaguetracker_backend.domain.CareerSquad;
+import com.leaguetracker.leaguetracker_backend.domain.SquadPlayer;
 import com.leaguetracker.leaguetracker_backend.domain.User;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDTO;
+import com.leaguetracker.leaguetracker_backend.dto.CareerDashboardDTO;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDetailsDTO;
+import com.leaguetracker.leaguetracker_backend.dto.SquadPlayerDTO;
+import com.leaguetracker.leaguetracker_backend.dto.YouthPlayerDTO;
+import com.leaguetracker.leaguetracker_backend.exception.AccessDeniedException;
 import com.leaguetracker.leaguetracker_backend.repository.CareerRepository;
+import com.leaguetracker.leaguetracker_backend.repository.SquadPlayerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class CareerService {
@@ -21,6 +29,12 @@ public class CareerService {
   @Autowired
   private UserRepository userRepository;
 
+  @Autowired
+  private SquadPlayerRepository squadPlayerRepository;
+
+  @Autowired
+  private YouthPlayerService youthPlayerService;
+
   public CareerDetailsDTO create(CareerDTO careerDTO, String username) {
     User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -30,6 +44,11 @@ public class CareerService {
         .manager(careerDTO.manager())
         .teamName(careerDTO.teamName())
         .build();
+
+    CareerSquad squad = new CareerSquad();
+    squad.setCareer(career);
+
+    career.setSquad(squad);
 
     Career savedCareer = careerRepository.save(career);
 
@@ -56,5 +75,48 @@ public class CareerService {
             career.getStartDate(),
             career.getBudget()))
         .toList();
+  }
+
+  public CareerDashboardDTO getFullDashboard(Long careerId, String currentUser) {
+    Career career = careerRepository.findById(careerId)
+        .orElseThrow(() -> new EntityNotFoundException("Carreira não encontrada"));
+
+    String ownerUsername = career.getUser().getUsername();
+
+    if (!ownerUsername.equals(currentUser)) {
+      throw new AccessDeniedException("Você não tem permissão para ver esta carreira.");
+    }
+
+    CareerDetailsDTO careerInfo = new CareerDetailsDTO(
+        career.getId(),
+        career.getGame(),
+        career.getManager(),
+        career.getTeamName(),
+        career.getTeamLogo(),
+        career.getStartDate(),
+        career.getBudget());
+
+    List<SquadPlayerDTO> principalSquad = squadPlayerRepository.findByCareerSquadId(career.getSquad().getId())
+        .stream()
+        .map(this::convertToSquadDTO)
+        .toList();
+
+    List<YouthPlayerDTO> youthSquad = youthPlayerService.findAllBySquad(career.getSquad().getId(), currentUser);
+
+    return new CareerDashboardDTO(careerInfo, principalSquad, youthSquad);
+  }
+
+  private SquadPlayerDTO convertToSquadDTO(SquadPlayer player) {
+    return new SquadPlayerDTO(
+        player.getId(),
+        player.getFullName(),
+        player.getCurrentOverall(),
+        player.getPotentialOverall(),
+        player.getCurrentMarketValue(),
+        player.getBirthDate(),
+        player.getPreferredFoot(),
+        player.getCountryId(),
+        player.getCareerSquad().getId(),
+        player.getRole());
   }
 }

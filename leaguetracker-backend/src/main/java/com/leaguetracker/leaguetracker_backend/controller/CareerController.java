@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leaguetracker.leaguetracker_backend.dto.CareerDTO;
+import com.leaguetracker.leaguetracker_backend.dto.CareerDashboardDTO;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDetailsDTO;
 import com.leaguetracker.leaguetracker_backend.service.CareerService;
 
@@ -13,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -35,4 +39,13 @@ public class CareerController {
   public List<CareerDetailsDTO> listAll(Authentication authentication) {
     return careerService.getCareersForUser(authentication.getName());
   }
+
+  @GetMapping("/{id}/dashboard")
+  public ResponseEntity<CareerDashboardDTO> getMethodName(
+      @PathVariable Long id,
+      @AuthenticationPrincipal UserDetails userDetails) {
+    CareerDashboardDTO dashboard = careerService.getFullDashboard(id, userDetails.getUsername());
+    return ResponseEntity.ok(dashboard);
+  }
+
 }
