@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leaguetracker.leaguetracker_backend.domain.YouthPlayer;
 import com.leaguetracker.leaguetracker_backend.dto.YouthPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.service.YouthPlayerService;
 
