@@ -22,7 +22,7 @@ public class League {
   private String type;
   private String logo;
 
-  private String countryName;
-  private String countryCode;
-  private String countryFlag;
+  @ManyToOne
+  @JoinColumn(name = "country_id")
+  private Country country;
 }

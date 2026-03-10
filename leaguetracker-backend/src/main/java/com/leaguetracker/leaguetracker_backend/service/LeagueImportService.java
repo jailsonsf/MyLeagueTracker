@@ -14,9 +14,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.leaguetracker.leaguetracker_backend.domain.Country;
 import com.leaguetracker.leaguetracker_backend.domain.League;
 import com.leaguetracker.leaguetracker_backend.dto.LeagueResponseWrapper;
 import com.leaguetracker.leaguetracker_backend.dto.LeagueDataDTO;
+import com.leaguetracker.leaguetracker_backend.dto.LeagueInfoDTO;
+import com.leaguetracker.leaguetracker_backend.repository.CountryRepository;
 import com.leaguetracker.leaguetracker_backend.repository.LeagueRepository;
 
 import jakarta.transaction.Transactional;
@@ -28,6 +31,9 @@ public class LeagueImportService {
 
   @Autowired
   private LeagueRepository leagueRepository;
+
+  @Autowired
+  private CountryRepository countryRepository;
 
   private final RestTemplate restTemplate = new RestTemplate();
 
@@ -56,6 +62,9 @@ public class LeagueImportService {
         return;
       }
 
+      Map<String, Country> countryMap = countryRepository.findAll().stream()
+          .collect(Collectors.toMap(Country::getName, c -> c, (a, b) -> a));
+
       Map<Long, League> currentLeaguesMap = leagueRepository.findAll().stream()
           .filter(l -> l.getExternalId() != null)
           .collect(Collectors.toMap(League::getExternalId, l -> l, (a, b) -> a));
@@ -64,17 +73,21 @@ public class LeagueImportService {
 
       for (LeagueDataDTO data : body.response()) {
         var info = data.league();
-        var country = data.country();
+        var countryData = data.country();
         Long extId = info.id();
+
+        Country country = countryMap.computeIfAbsent(countryData.name(), name -> {
+          log.debug("Novo país detectado: {}", name);
+          return countryRepository.save(Country.builder()
+              .name(name)
+              .code(countryData.code())
+              .flag(countryData.flag())
+              .build());
+        });
 
         if (currentLeaguesMap.containsKey(extId)) {
           League existing = currentLeaguesMap.get(extId);
-          existing.setName(info.name());
-          existing.setType(info.type());
-          existing.setLogo(info.logo());
-          existing.setCountryName(country.name());
-          existing.setCountryCode(country.code());
-          existing.setCountryFlag(country.flag());
+          upadteLeagueFields(existing, info, country);
           toSave.add(existing);
         } else {
           toSave.add(League.builder()
@@ -82,9 +95,7 @@ public class LeagueImportService {
               .name(info.name())
               .type(info.type())
               .logo(info.logo())
-              .countryName(country.name())
-              .countryCode(country.code())
-              .countryFlag(country.flag())
+              .country(country)
               .build());
         }
       }
@@ -96,5 +107,12 @@ public class LeagueImportService {
       log.error("Erro ao importar ligas: {}", e.getMessage());
       throw new RuntimeException("Falha na integração com API-Sports", e);
     }
+  }
+
+  private void upadteLeagueFields(League league, LeagueInfoDTO info, Country country) {
+    league.setName(info.name());
+    league.setType(info.type());
+    league.setLogo(info.logo());
+    league.setCountry(country);
   }
 }

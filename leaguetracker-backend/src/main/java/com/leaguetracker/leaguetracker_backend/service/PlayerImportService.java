@@ -12,14 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.Club;
+import com.leaguetracker.leaguetracker_backend.domain.Country;
 import com.leaguetracker.leaguetracker_backend.domain.Player;
 import com.leaguetracker.leaguetracker_backend.repository.ClubRepository;
+import com.leaguetracker.leaguetracker_backend.repository.CountryRepository;
 import com.leaguetracker.leaguetracker_backend.repository.PlayerRepository;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class PlayerImportService {
 
@@ -28,6 +32,9 @@ public class PlayerImportService {
 
   @Autowired
   private ClubRepository clubRepository;
+
+  @Autowired
+  private CountryRepository countryRepository;
 
   @Transactional
   public void importCsv(InputStream inputStream) {
@@ -52,10 +59,23 @@ public class PlayerImportService {
       Map<Long, Club> clubMap = clubRepository.findAll().stream()
           .collect(Collectors.toMap(Club::getExternalId, c -> c, (a, b) -> a));
 
+      Map<String, Country> countryMap = countryRepository.findAll().stream()
+          .collect(Collectors.toMap(c -> c.getName().toLowerCase(), c -> c, (a, b) -> a));
+
       for (Player player : allPlayersFromCsv) {
         Long player_id = player.getExternalId();
         if (player_id == null)
           continue;
+
+        String nameToSearch = player.getCsvCountryName();
+        if (nameToSearch != null) {
+          Country foundCountry = countryMap.get(nameToSearch.toLowerCase().trim());
+          player.setCountry(foundCountry);
+
+          if (foundCountry == null) {
+            log.warn("País '{}' não encontrado no banco para o jogador {}", nameToSearch, player.getFullName());
+          }
+        }
 
         Long clubId = player.getCsvClubId();
 
@@ -97,6 +117,7 @@ public class PlayerImportService {
     existing.setDateOfBirth(updated.getDateOfBirth());
     existing.setHeightCm(updated.getHeightCm());
     existing.setWeightKg(updated.getWeightKg());
+    existing.setCountry(updated.getCountry());
     existing.setClub(club);
   }
 }
