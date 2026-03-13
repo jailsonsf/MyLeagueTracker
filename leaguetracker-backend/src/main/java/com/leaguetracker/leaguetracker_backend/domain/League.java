@@ -19,7 +19,10 @@ public class League {
 
   private Long externalId;
   private String name;
-  private String type;
+
+  @Enumerated(EnumType.STRING)
+  private LeagueType type;
+
   private String logo;
 
   @ManyToOne

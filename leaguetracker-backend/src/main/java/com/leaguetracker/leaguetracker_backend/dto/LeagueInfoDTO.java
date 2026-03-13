@@ -1,5 +1,7 @@
 package com.leaguetracker.leaguetracker_backend.dto;
 
-public record LeagueInfoDTO(Long id, String name, String type, String logo, String countryName) {
+import com.leaguetracker.leaguetracker_backend.domain.LeagueType;
+
+public record LeagueInfoDTO(Long id, String name, LeagueType type, String logo, String countryName) {
 
 }
