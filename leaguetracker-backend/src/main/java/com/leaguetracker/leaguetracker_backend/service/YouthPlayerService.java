@@ -62,7 +62,8 @@ public class YouthPlayerService {
     youth.setCurrentOverall(youthPlayerDTO.currentOverall());
     youth.setPotentialOverall(youthPlayerDTO.potentialOverall());
     youth.setCurrentMarketValue(youthPlayerDTO.currentMarketValue());
-    youth.setDateOfBirth(youthPlayerDTO.dateOfBirth());
+    youth.setAge(youthPlayerDTO.age());
+    youth.setYearJoinedClub(youthPlayerDTO.yearJoinedClub());
     youth.setPreferredFoot(youthPlayerDTO.preferredFoot());
     youth.setRole(youthPlayerDTO.role());
 
@@ -113,7 +114,8 @@ public class YouthPlayerService {
         youth.getCurrentOverall(),
         youth.getPotentialOverall(),
         youth.getCurrentMarketValue(),
-        youth.getDateOfBirth(),
+        youth.getAge(),
+        youth.getYearJoinedClub(),
         youth.getPreferredFoot(),
         youth.getCountry() != null ? youth.getCountry().getId() : null,
         youth.getCareerSquad().getId(),

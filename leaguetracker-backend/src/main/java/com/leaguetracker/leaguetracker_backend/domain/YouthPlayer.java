@@ -1,7 +1,6 @@
 package com.leaguetracker.leaguetracker_backend.domain;
 
 import java.time.LocalDate;
-import java.time.Period;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,7 +24,8 @@ public class YouthPlayer {
   private long currentWage;
   private int heightCm;
   private int weightKg;
-  private LocalDate dateOfBirth;
+  private int age;
+  private int yearJoinedClub;
   private boolean promotedToSquad;
   private Integer kitNumber;
 
@@ -45,6 +45,7 @@ public class YouthPlayer {
   private CareerSquad careerSquad;
 
   public int getAgeInSeason(LocalDate seasonStartDate) {
-    return Period.between(dateOfBirth, seasonStartDate).getYears();
+    int sumYear = seasonStartDate.getYear() - this.yearJoinedClub;
+    return this.age + sumYear;
   }
 }

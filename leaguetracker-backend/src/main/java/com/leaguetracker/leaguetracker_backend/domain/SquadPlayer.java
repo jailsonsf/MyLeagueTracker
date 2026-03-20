@@ -35,7 +35,8 @@ public class SquadPlayer {
   private CareerSquad careerSquad;
 
   private String fullName;
-  private LocalDate birthDate;
+  private int age;
+  private int yearJoinedClub;
 
   private int startingOverall;
   private int currentOverall;
@@ -55,8 +56,13 @@ public class SquadPlayer {
   }
 
   public int getAgeInSeason(LocalDate seasonStartDate) {
-    LocalDate dateToUse = (playerInfo != null) ? playerInfo.getDateOfBirth() : this.birthDate;
-    return (dateToUse != null) ? Period.between(dateToUse, seasonStartDate).getYears() : 0;
+    if (playerInfo != null) {
+      LocalDate dateToUse = playerInfo.getDateOfBirth();
+      return (dateToUse != null) ? Period.between(dateToUse, seasonStartDate).getYears() : 0;
+    }
+
+    int sumYear = seasonStartDate.getYear() - this.yearJoinedClub;
+    return this.age + sumYear;
   }
 
   public int getPotentialOverall() {
@@ -87,7 +93,7 @@ public class SquadPlayer {
     return SquadPlayer.builder()
         .playerInfo(null)
         .fullName(youth.getFullName())
-        .birthDate(youth.getDateOfBirth())
+        .age(youth.getAge())
         .country(youth.getCountry())
         .careerSquad(youth.getCareerSquad())
         .startingOverall(youth.getCurrentOverall())

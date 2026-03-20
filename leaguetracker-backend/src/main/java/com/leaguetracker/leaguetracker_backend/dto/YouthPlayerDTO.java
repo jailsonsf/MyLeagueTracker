@@ -1,7 +1,5 @@
 package com.leaguetracker.leaguetracker_backend.dto;
 
-import java.time.LocalDate;
-
 import com.leaguetracker.leaguetracker_backend.domain.PlayerRole;
 import com.leaguetracker.leaguetracker_backend.domain.PreferredFoot;
 
@@ -11,7 +9,8 @@ public record YouthPlayerDTO(
     int currentOverall,
     int potentialOverall,
     long currentMarketValue,
-    LocalDate dateOfBirth,
+    int age,
+    int yearJoinedClub,
     PreferredFoot preferredFoot,
     Long countryId,
     Long careerSquadId,
