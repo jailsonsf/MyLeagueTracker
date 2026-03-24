@@ -85,6 +85,7 @@ public class PlayerImportService {
                 Club.builder()
                     .externalId(id)
                     .name(player.getCsvClubName())
+                    .logo(player.getCsvClubLogo())
                     .clubRating(player.getCsvClubRating())
                     .build());
           });
