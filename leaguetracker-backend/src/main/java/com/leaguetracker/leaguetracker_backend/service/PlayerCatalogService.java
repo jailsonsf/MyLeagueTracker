@@ -71,8 +71,10 @@ public class PlayerCatalogService {
         player.getPreferredFoot(),
         player.getValue(),
         player.getWage(),
+        player.getImage(),
         player.getHeightCm(),
-        player.getWeightKg()));
+        player.getWeightKg(),
+        player.getKitNumber()));
   }
 
   public PlayerDTO getPlayerById(Long player_id) {
@@ -88,8 +90,10 @@ public class PlayerCatalogService {
             player.getPreferredFoot(),
             player.getValue(),
             player.getWage(),
+            player.getImage(),
             player.getHeightCm(),
-            player.getWeightKg()))
+            player.getWeightKg(),
+            player.getKitNumber()))
         .orElse(null);
   }
 }

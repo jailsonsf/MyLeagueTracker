@@ -35,6 +35,7 @@ public class SquadPlayer {
   private CareerSquad careerSquad;
 
   private String fullName;
+  private String image;
   private int age;
   private int yearJoinedClub;
 
@@ -43,6 +44,7 @@ public class SquadPlayer {
   private int potentialOverall;
   private long currentMarketValue;
   private long currentWage;
+  private int kitNumber;
 
   @Enumerated(EnumType.STRING)
   private PreferredFoot preferredFoot;
@@ -63,6 +65,13 @@ public class SquadPlayer {
 
     int sumYear = seasonStartDate.getYear() - this.yearJoinedClub;
     return this.age + sumYear;
+  }
+
+  public String getImage() {
+    if (this.playerInfo != null) {
+      return this.playerInfo.getImage();
+    }
+    return this.image;
   }
 
   public int getPotentialOverall() {

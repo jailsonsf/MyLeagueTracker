@@ -21,6 +21,7 @@ public class Club {
   private Long externalId;
 
   private String name;
+  private String logo;
 
   private int clubRating;
 

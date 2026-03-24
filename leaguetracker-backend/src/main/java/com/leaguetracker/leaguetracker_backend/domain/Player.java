@@ -53,6 +53,9 @@ public class Player {
   @CsvDate("yyyy-MM-dd")
   private LocalDate dateOfBirth;
 
+  @CsvBindByName(column = "image")
+  private String image;
+
   @CsvBindByName(column = "height_cm")
   private int heightCm;
 
@@ -73,7 +76,7 @@ public class Player {
   private Club club;
 
   @CsvBindByName(column = "club_kit_number")
-  private Integer kitNumber;
+  private int kitNumber;
 
   @Transient
   @CsvBindByName(column = "club_id")

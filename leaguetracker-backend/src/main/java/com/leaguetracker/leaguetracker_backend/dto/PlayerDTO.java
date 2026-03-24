@@ -17,6 +17,8 @@ public record PlayerDTO(
     PreferredFoot preferredFoot,
     Long value,
     Long wage,
+    String image,
     int heightCm,
-    int weightKg) {
+    int weightKg,
+    int kitNumber) {
 }

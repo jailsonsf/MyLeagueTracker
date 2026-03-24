@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.Career;
 import com.leaguetracker.leaguetracker_backend.domain.CareerSquad;
+import com.leaguetracker.leaguetracker_backend.domain.Club;
 import com.leaguetracker.leaguetracker_backend.domain.SquadPlayer;
 import com.leaguetracker.leaguetracker_backend.domain.User;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDTO;
@@ -16,6 +17,7 @@ import com.leaguetracker.leaguetracker_backend.dto.SquadPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.dto.YouthPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.exception.AccessDeniedException;
 import com.leaguetracker.leaguetracker_backend.repository.CareerRepository;
+import com.leaguetracker.leaguetracker_backend.repository.ClubRepository;
 import com.leaguetracker.leaguetracker_backend.repository.SquadPlayerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -35,14 +37,25 @@ public class CareerService {
   @Autowired
   private YouthPlayerService youthPlayerService;
 
+  @Autowired
+  private ClubRepository clubRepository;
+
   public CareerDetailsDTO create(CareerDTO careerDTO, String username) {
     User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
 
+    Club club = null;
+    if (careerDTO.clubId() != null) {
+      club = clubRepository.findById(careerDTO.clubId())
+        .orElseThrow(() -> new RuntimeException("Club not found"));
+    }
+
     Career career = Career.builder()
         .user(user)
+        .club(club)
         .game(careerDTO.game())
         .manager(careerDTO.manager())
         .teamName(careerDTO.teamName())
+        .budget(careerDTO.budget())
         .build();
 
     CareerSquad squad = new CareerSquad();
@@ -52,12 +65,20 @@ public class CareerService {
 
     Career savedCareer = careerRepository.save(career);
 
+    String teamName = (savedCareer.getClub() != null) 
+                           ? savedCareer.getClub().getName() 
+                           : savedCareer.getTeamName();
+
+    String teamLogo = (savedCareer.getClub() != null) 
+                           ? savedCareer.getClub().getLogo()
+                           : savedCareer.getTeamLogo();
+
     return new CareerDetailsDTO(
         savedCareer.getId(),
         savedCareer.getGame(),
         savedCareer.getManager(),
-        savedCareer.getTeamName(),
-        savedCareer.getTeamLogo(),
+        teamName,
+        teamLogo,
         savedCareer.getStartDate(),
         savedCareer.getBudget());
   }
@@ -110,14 +131,18 @@ public class CareerService {
     return new SquadPlayerDTO(
         player.getId(),
         player.getFullName(),
+        player.getImage(),
+        player.getAge(),
+        player.getYearJoinedClub(),
+        player.getStartingOverall(),
         player.getCurrentOverall(),
         player.getPotentialOverall(),
         player.getCurrentMarketValue(),
-        player.getAge(),
-        player.getYearJoinedClub(),
+        player.getCurrentWage(),
         player.getPreferredFoot(),
         player.getCountryId(),
         player.getCareerSquad().getId(),
-        player.getRole());
+        player.getRole(),
+        player.getKitNumber());
   }
 }

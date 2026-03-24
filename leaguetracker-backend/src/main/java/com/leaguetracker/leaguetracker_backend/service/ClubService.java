@@ -42,6 +42,7 @@ public class ClubService {
         club.getId(),
         club.getExternalId(),
         club.getName(),
+        club.getLogo(),
         club.getClubRating(),
         playerDTOs);
   }
@@ -58,7 +59,9 @@ public class ClubService {
         player.getPreferredFoot(),
         player.getValue(),
         player.getWage(),
+        player.getImage(),
         player.getHeightCm(),
-        player.getWeightKg());
+        player.getWeightKg(),
+        player.getKitNumber());
   }
 }

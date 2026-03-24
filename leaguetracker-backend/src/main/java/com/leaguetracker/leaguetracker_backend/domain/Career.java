@@ -27,6 +27,10 @@ public class Career {
   @JoinColumn(name = "user_id", nullable = false)
   private User user;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "club_id")
+  private Club club;
+
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private GameTitle game;

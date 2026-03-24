@@ -111,12 +111,18 @@ public class YouthPlayerService {
     return new YouthPlayerDTO(
         youth.getId(),
         youth.getFullName(),
+        youth.getStartingOverall(),
         youth.getCurrentOverall(),
         youth.getPotentialOverall(),
         youth.getCurrentMarketValue(),
+        youth.getCurrentWage(),
+        youth.getImage(),
+        youth.getHeightCm(),
+        youth.getWeightKg(),
         youth.getAge(),
         youth.getYearJoinedClub(),
         youth.getPreferredFoot(),
+        youth.getKitNumber(),
         youth.getCountry() != null ? youth.getCountry().getId() : null,
         youth.getCareerSquad().getId(),
         youth.getRole());

@@ -17,17 +17,17 @@ public class YouthPlayer {
   private Long id;
 
   private String fullName;
-  private int overall;
+  private int startingOverall;
   private int currentOverall;
   private int potentialOverall;
   private long currentMarketValue;
   private long currentWage;
+  private String image;
   private int heightCm;
   private int weightKg;
   private int age;
   private int yearJoinedClub;
-  private boolean promotedToSquad;
-  private Integer kitNumber;
+  private int kitNumber;
 
   @Enumerated(EnumType.STRING)
   private PreferredFoot preferredFoot;

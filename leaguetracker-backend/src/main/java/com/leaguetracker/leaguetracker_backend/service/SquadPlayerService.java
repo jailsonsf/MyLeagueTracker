@@ -57,14 +57,18 @@ public class SquadPlayerService {
     return new SquadPlayerDTO(
         squad.getId(),
         squad.getFullName(),
+        squad.getImage(),
+        squad.getAge(),
+        squad.getYearJoinedClub(),
+        squad.getStartingOverall(),
         squad.getCurrentOverall(),
         squad.getPotentialOverall(),
         squad.getCurrentMarketValue(),
-        squad.getAge(),
-        squad.getYearJoinedClub(),
+        squad.getCurrentWage(),
         squad.getPreferredFoot(),
         squad.getCountry() != null ? squad.getCountry().getId() : null,
         squad.getCareerSquad().getId(),
-        squad.getRole());
+        squad.getRole(),
+        squad.getKitNumber());
   }
 }
