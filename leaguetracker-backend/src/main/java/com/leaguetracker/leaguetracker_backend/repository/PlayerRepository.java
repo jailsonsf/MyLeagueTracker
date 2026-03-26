@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
-import com.leaguetracker.leaguetracker_backend.domain.Player;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Player;
 
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long>, JpaSpecificationExecutor<Player> {

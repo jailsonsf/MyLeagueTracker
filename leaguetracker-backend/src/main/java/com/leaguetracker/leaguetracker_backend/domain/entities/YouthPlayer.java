@@ -1,6 +1,9 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.entities;
 
 import java.time.LocalDate;
+
+import com.leaguetracker.leaguetracker_backend.domain.enums.PlayerRole;
+import com.leaguetracker.leaguetracker_backend.domain.enums.PreferredFoot;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,7 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class YouthPlayer {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

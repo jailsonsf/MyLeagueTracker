@@ -1,10 +1,13 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.leaguetracker.leaguetracker_backend.domain.enums.GameTitle;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,7 +21,6 @@ import lombok.*;
 @Builder
 @EntityListeners(AuditingEntityListener.class)
 public class Career {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -50,6 +52,9 @@ public class Career {
   private LocalDate startDate;
 
   private LocalDate currentSeason;
+
+  @OneToMany(mappedBy = "career")
+  private List<Season> seasons;
 
   @OneToOne(mappedBy = "career", cascade = CascadeType.ALL)
   private CareerSquad squad;

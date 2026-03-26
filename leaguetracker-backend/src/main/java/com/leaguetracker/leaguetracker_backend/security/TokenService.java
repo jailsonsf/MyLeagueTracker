@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.leaguetracker.leaguetracker_backend.domain.User;
+import com.leaguetracker.leaguetracker_backend.domain.entities.User;
 
 @Service
 public class TokenService {

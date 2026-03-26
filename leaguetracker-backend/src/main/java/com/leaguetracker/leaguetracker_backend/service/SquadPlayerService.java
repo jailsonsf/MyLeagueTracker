@@ -3,7 +3,7 @@ package com.leaguetracker.leaguetracker_backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leaguetracker.leaguetracker_backend.domain.SquadPlayer;
+import com.leaguetracker.leaguetracker_backend.domain.entities.SquadPlayer;
 import com.leaguetracker.leaguetracker_backend.dto.SquadPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.repository.CareerSquadRepository;
 import com.leaguetracker.leaguetracker_backend.repository.CountryRepository;

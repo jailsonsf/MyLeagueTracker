@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leaguetracker.leaguetracker_backend.domain.CareerSquad;
-import com.leaguetracker.leaguetracker_backend.domain.SquadPlayer;
-import com.leaguetracker.leaguetracker_backend.domain.YouthPlayer;
+import com.leaguetracker.leaguetracker_backend.domain.entities.CareerSquad;
+import com.leaguetracker.leaguetracker_backend.domain.entities.SquadPlayer;
+import com.leaguetracker.leaguetracker_backend.domain.entities.YouthPlayer;
 import com.leaguetracker.leaguetracker_backend.dto.YouthPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.exception.AccessDeniedException;
 import com.leaguetracker.leaguetracker_backend.repository.CareerSquadRepository;

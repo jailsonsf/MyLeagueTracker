@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.persistence.criteria.Predicate;
 
-import com.leaguetracker.leaguetracker_backend.domain.Player;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Player;
 import com.leaguetracker.leaguetracker_backend.dto.PlayerDTO;
 import com.leaguetracker.leaguetracker_backend.dto.PlayerSearchDTO;
 import com.leaguetracker.leaguetracker_backend.repository.PlayerRepository;

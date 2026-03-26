@@ -1,4 +1,6 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.entities;
+
+import com.leaguetracker.leaguetracker_backend.domain.enums.LeagueType;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +13,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class League {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "league_seq")
   @SequenceGenerator(name = "league_seq", sequenceName = "league_id_seq", allocationSize = 50)

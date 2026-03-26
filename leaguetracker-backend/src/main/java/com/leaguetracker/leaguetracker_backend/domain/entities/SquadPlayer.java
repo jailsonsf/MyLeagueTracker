@@ -1,7 +1,11 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.entities;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
+
+import com.leaguetracker.leaguetracker_backend.domain.enums.PlayerRole;
+import com.leaguetracker.leaguetracker_backend.domain.enums.PreferredFoot;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,6 +37,9 @@ public class SquadPlayer {
   @ManyToOne
   @JoinColumn(name = "career_squad_id", nullable = false)
   private CareerSquad careerSquad;
+
+  @OneToMany(mappedBy = "player")
+  private List<PlayerAward> awards;
 
   private String fullName;
   private String image;

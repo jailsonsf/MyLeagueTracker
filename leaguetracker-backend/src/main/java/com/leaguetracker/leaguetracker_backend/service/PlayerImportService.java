@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leaguetracker.leaguetracker_backend.domain.Club;
-import com.leaguetracker.leaguetracker_backend.domain.Country;
-import com.leaguetracker.leaguetracker_backend.domain.Player;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Club;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Country;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Player;
 import com.leaguetracker.leaguetracker_backend.repository.ClubRepository;
 import com.leaguetracker.leaguetracker_backend.repository.CountryRepository;
 import com.leaguetracker.leaguetracker_backend.repository.PlayerRepository;

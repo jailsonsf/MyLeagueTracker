@@ -1,4 +1,4 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.enums;
 
 import lombok.Getter;
 
