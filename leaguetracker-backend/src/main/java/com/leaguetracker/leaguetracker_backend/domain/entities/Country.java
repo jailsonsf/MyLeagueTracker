@@ -1,4 +1,4 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Country {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

@@ -3,7 +3,7 @@ package com.leaguetracker.leaguetracker_backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leaguetracker.leaguetracker_backend.domain.SquadPlayer;
+import com.leaguetracker.leaguetracker_backend.domain.entities.SquadPlayer;
 import com.leaguetracker.leaguetracker_backend.dto.SquadPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.repository.CareerSquadRepository;
 import com.leaguetracker.leaguetracker_backend.repository.CountryRepository;
@@ -25,7 +25,7 @@ public class SquadPlayerService {
   private CountryRepository countryRepository;
 
   @Transactional
-  public SquadPlayerDTO saveOrUpdate(SquadPlayerDTO squadPlayerDTO) {
+  public SquadPlayer saveOrUpdate(SquadPlayerDTO squadPlayerDTO) {
     SquadPlayer squadPlayer = (squadPlayerDTO.id() != null)
         ? squadPlayerRepository.findById(squadPlayerDTO.id()).orElse(new SquadPlayer())
         : new SquadPlayer();
@@ -50,25 +50,6 @@ public class SquadPlayerService {
 
     SquadPlayer saved = squadPlayerRepository.save(squadPlayer);
 
-    return convertToDTO(saved);
-  }
-
-  private SquadPlayerDTO convertToDTO(SquadPlayer squad) {
-    return new SquadPlayerDTO(
-        squad.getId(),
-        squad.getFullName(),
-        squad.getImage(),
-        squad.getAge(),
-        squad.getYearJoinedClub(),
-        squad.getStartingOverall(),
-        squad.getCurrentOverall(),
-        squad.getPotentialOverall(),
-        squad.getCurrentMarketValue(),
-        squad.getCurrentWage(),
-        squad.getPreferredFoot(),
-        squad.getCountry() != null ? squad.getCountry().getId() : null,
-        squad.getCareerSquad().getId(),
-        squad.getRole(),
-        squad.getKitNumber());
+    return saved;
   }
 }

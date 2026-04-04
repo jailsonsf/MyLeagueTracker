@@ -1,8 +1,10 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.entities;
 
 import java.time.LocalDate;
 import java.util.Set;
 
+import com.leaguetracker.leaguetracker_backend.domain.enums.Position;
+import com.leaguetracker.leaguetracker_backend.domain.enums.PreferredFoot;
 import com.leaguetracker.leaguetracker_backend.service.MoneyConverter;
 import com.leaguetracker.leaguetracker_backend.service.PositionAttributeConverter;
 import com.leaguetracker.leaguetracker_backend.service.PositionConverter;
@@ -21,7 +23,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Player {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_seq")
   @SequenceGenerator(name = "player_seq", sequenceName = "player_id_seq", allocationSize = 50)

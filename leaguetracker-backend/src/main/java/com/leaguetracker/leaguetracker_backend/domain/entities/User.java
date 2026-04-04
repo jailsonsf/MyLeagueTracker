@@ -1,4 +1,4 @@
-package com.leaguetracker.leaguetracker_backend.domain;
+package com.leaguetracker.leaguetracker_backend.domain.entities;
 
 import java.util.Collection;
 import java.util.List;
@@ -7,6 +7,8 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.leaguetracker.leaguetracker_backend.domain.enums.UserRole;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

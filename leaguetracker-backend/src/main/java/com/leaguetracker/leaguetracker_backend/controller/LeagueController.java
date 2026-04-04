@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leaguetracker.leaguetracker_backend.domain.Country;
-import com.leaguetracker.leaguetracker_backend.domain.League;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Country;
+import com.leaguetracker.leaguetracker_backend.domain.entities.League;
 import com.leaguetracker.leaguetracker_backend.dto.CountryDTO;
 import com.leaguetracker.leaguetracker_backend.dto.LeagueDataDTO;
 import com.leaguetracker.leaguetracker_backend.dto.LeagueInfoDTO;

@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.leaguetracker.leaguetracker_backend.domain.User;
-import com.leaguetracker.leaguetracker_backend.domain.UserRole;
+import com.leaguetracker.leaguetracker_backend.domain.entities.User;
+import com.leaguetracker.leaguetracker_backend.domain.enums.UserRole;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

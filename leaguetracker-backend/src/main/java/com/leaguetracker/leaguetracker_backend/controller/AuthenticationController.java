@@ -8,8 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leaguetracker.leaguetracker_backend.domain.User;
-import com.leaguetracker.leaguetracker_backend.domain.UserRole;
+import com.leaguetracker.leaguetracker_backend.domain.entities.User;
+import com.leaguetracker.leaguetracker_backend.domain.enums.UserRole;
 import com.leaguetracker.leaguetracker_backend.dto.AuthenticationDTO;
 import com.leaguetracker.leaguetracker_backend.dto.LoginResponseDTO;
 import com.leaguetracker.leaguetracker_backend.dto.RegisterDTO;

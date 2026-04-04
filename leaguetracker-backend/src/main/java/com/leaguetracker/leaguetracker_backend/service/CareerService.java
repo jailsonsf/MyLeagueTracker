@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leaguetracker.leaguetracker_backend.domain.Career;
-import com.leaguetracker.leaguetracker_backend.domain.CareerSquad;
-import com.leaguetracker.leaguetracker_backend.domain.Club;
-import com.leaguetracker.leaguetracker_backend.domain.SquadPlayer;
-import com.leaguetracker.leaguetracker_backend.domain.User;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Career;
+import com.leaguetracker.leaguetracker_backend.domain.entities.CareerSquad;
+import com.leaguetracker.leaguetracker_backend.domain.entities.Club;
+import com.leaguetracker.leaguetracker_backend.domain.entities.SquadPlayer;
+import com.leaguetracker.leaguetracker_backend.domain.entities.User;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDTO;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDashboardDTO;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDetailsDTO;
