@@ -51,15 +51,9 @@ public class Career {
   @Column(nullable = false, updatable = false)
   private LocalDate startDate;
 
-  private LocalDate currentSeason;
-
   @OneToMany(mappedBy = "career")
   private List<Season> seasons;
 
   @OneToOne(mappedBy = "career", cascade = CascadeType.ALL)
   private CareerSquad squad;
-
-  public void advanceSeason() {
-    this.currentSeason = this.currentSeason.plusYears(1);
-  }
 }
