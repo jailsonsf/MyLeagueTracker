@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.leaguetracker.leaguetracker_backend.domain.enums.PlayerRole;
 import com.leaguetracker.leaguetracker_backend.domain.enums.PreferredFoot;
+import com.leaguetracker.leaguetracker_backend.domain.enums.TransferMethod;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -52,9 +53,13 @@ public class SquadPlayer {
   private long currentMarketValue;
   private long currentWage;
   private int kitNumber;
+  private Boolean isYouthPlayer;
 
   @Enumerated(EnumType.STRING)
   private PreferredFoot preferredFoot;
+
+  @Enumerated(EnumType.STRING)
+  private TransferMethod transferMethod;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "player_role")
@@ -118,6 +123,8 @@ public class SquadPlayer {
         .currentMarketValue(youth.getCurrentMarketValue())
         .currentWage(youth.getCurrentWage())
         .preferredFoot(youth.getPreferredFoot())
+        .transferMethod(TransferMethod.NOT_DEFINIED)
+        .isYouthPlayer(true)
         .role(youth.getRole() != null ? youth.getRole() : PlayerRole.PROSPECT)
         .build();
   }

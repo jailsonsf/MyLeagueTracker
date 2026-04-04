@@ -25,7 +25,7 @@ public class SquadPlayerService {
   private CountryRepository countryRepository;
 
   @Transactional
-  public SquadPlayerDTO saveOrUpdate(SquadPlayerDTO squadPlayerDTO) {
+  public SquadPlayer saveOrUpdate(SquadPlayerDTO squadPlayerDTO) {
     SquadPlayer squadPlayer = (squadPlayerDTO.id() != null)
         ? squadPlayerRepository.findById(squadPlayerDTO.id()).orElse(new SquadPlayer())
         : new SquadPlayer();
@@ -50,25 +50,6 @@ public class SquadPlayerService {
 
     SquadPlayer saved = squadPlayerRepository.save(squadPlayer);
 
-    return convertToDTO(saved);
-  }
-
-  private SquadPlayerDTO convertToDTO(SquadPlayer squad) {
-    return new SquadPlayerDTO(
-        squad.getId(),
-        squad.getFullName(),
-        squad.getImage(),
-        squad.getAge(),
-        squad.getYearJoinedClub(),
-        squad.getStartingOverall(),
-        squad.getCurrentOverall(),
-        squad.getPotentialOverall(),
-        squad.getCurrentMarketValue(),
-        squad.getCurrentWage(),
-        squad.getPreferredFoot(),
-        squad.getCountry() != null ? squad.getCountry().getId() : null,
-        squad.getCareerSquad().getId(),
-        squad.getRole(),
-        squad.getKitNumber());
+    return saved;
   }
 }
