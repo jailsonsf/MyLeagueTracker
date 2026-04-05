@@ -1,5 +1,6 @@
 package com.leaguetracker.leaguetracker_backend.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,9 @@ import com.leaguetracker.leaguetracker_backend.domain.entities.League;
 import com.leaguetracker.leaguetracker_backend.domain.entities.Player;
 import com.leaguetracker.leaguetracker_backend.domain.entities.PlayerAward;
 import com.leaguetracker.leaguetracker_backend.domain.entities.Season;
+import com.leaguetracker.leaguetracker_backend.domain.entities.SquadPlayer;
 import com.leaguetracker.leaguetracker_backend.domain.entities.TeamTrophy;
 import com.leaguetracker.leaguetracker_backend.domain.entities.Trophy;
-import com.leaguetracker.leaguetracker_backend.dto.TrophyDetailsDTO;
 import com.leaguetracker.leaguetracker_backend.dto.TrophyRequestDTO;
 import com.leaguetracker.leaguetracker_backend.exception.AccessDeniedException;
 import com.leaguetracker.leaguetracker_backend.exception.ResourceNotFoundException;
@@ -20,6 +21,7 @@ import com.leaguetracker.leaguetracker_backend.repository.CareerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.LeagueRepository;
 import com.leaguetracker.leaguetracker_backend.repository.PlayerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.SeasonRepository;
+import com.leaguetracker.leaguetracker_backend.repository.SquadPlayerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.TrophyRepository;
 
 import jakarta.transaction.Transactional;
@@ -42,8 +44,11 @@ public class TrophyService {
   @Autowired
   private PlayerRepository playerRepository;
 
+  @Autowired
+  private SquadPlayerRepository squadPlayerRepository;
+
   @Transactional
-  public TrophyDetailsDTO createTrophy(TrophyRequestDTO data, String username) {
+  public Trophy createTrophy(TrophyRequestDTO data, String username) {
     validateCareerOwnership(data.careerId(), username);
 
     Career career = findCareer(data.careerId());
@@ -52,37 +57,31 @@ public class TrophyService {
 
     validateSeasonBelongsToCareer(season, career);
 
-    Trophy trophy = buildTrophy(data);
+    Trophy trophy = buildTrophy(data, career);
     trophy.setCareer(career);
     trophy.setSeason(season);
     trophy.setLeague(league);
 
-    trophyRepository.save(trophy);
-
-    return convertToDTO(trophy);
+    return trophyRepository.save(trophy);
   }
 
-  public List<TrophyDetailsDTO> findAllByCareer(Long careerId, String username) {
+  public List<Trophy> findAllByCareer(Long careerId, String username) {
     validateCareerOwnership(careerId, username);
 
-    return trophyRepository.findByCareerId(careerId).stream()
-        .map(this::convertToDTO)
-        .toList();
+    return trophyRepository.findByCareerId(careerId);
   }
 
-  public List<TrophyDetailsDTO> findAllBySeason(Long seasonId, String username) {
+  public List<Trophy> findAllBySeason(Long seasonId, String username) {
     Season season = findSeason(seasonId);
     validateCareerOwnership(season.getCareer().getId(), username);
 
-    return trophyRepository.findBySeasonId(seasonId).stream()
-        .map(this::convertToDTO)
-        .toList();
+    return trophyRepository.findBySeasonId(seasonId);
   }
 
-  public TrophyDetailsDTO findByIdSecure(Long trophyId, String username) {
+  public Trophy findByIdSecure(Long trophyId, String username) {
     Trophy trophy = findTrophy(trophyId);
     validateCareerOwnership(trophy.getCareer().getId(), username);
-    return convertToDTO(trophy);
+    return trophy;
   }
 
   @Transactional
@@ -92,13 +91,16 @@ public class TrophyService {
     trophyRepository.delete(trophy);
   }
 
-  private Trophy buildTrophy(TrophyRequestDTO data) {
+  private Trophy buildTrophy(TrophyRequestDTO data, Career career) {
     String normalizedCategory = normalizeCategory(data.category());
 
     if ("PLAYER".equals(normalizedCategory)) {
       PlayerAward playerAward = new PlayerAward();
-      playerAward.setPlayer(findPlayerIfPresent(data.playerId()));
-      playerAward.setPlayerName(data.playerName());
+      Player player = findPlayerIfPresent(data.playerId());
+      SquadPlayer squadPlayer = resolveSquadPlayer(data, career, player);
+      playerAward.setPlayer(player != null ? player : squadPlayer != null ? squadPlayer.getPlayerInfo() : null);
+      playerAward.setSquadPlayer(squadPlayer);
+      playerAward.setPlayerName(resolvePlayerName(data.playerName(), squadPlayer, player));
       playerAward.setAwardType(data.awardType());
       playerAward.setGoalsCount(data.goalsCount());
       playerAward.setAssistsCount(data.assistsCount());
@@ -113,54 +115,6 @@ public class TrophyService {
     }
 
     throw new IllegalArgumentException("Categoria de troféu inválida. Use PLAYER ou TEAM.");
-  }
-
-  private TrophyDetailsDTO convertToDTO(Trophy trophy) {
-    if (trophy instanceof PlayerAward playerAward) {
-      return new TrophyDetailsDTO(
-          playerAward.getId(),
-          "PLAYER",
-          playerAward.getSeason() != null ? playerAward.getSeason().getId() : null,
-          playerAward.getLeague() != null ? playerAward.getLeague().getId() : null,
-          playerAward.getCareer() != null ? playerAward.getCareer().getId() : null,
-          playerAward.getPlayer() != null ? playerAward.getPlayer().getId() : null,
-          playerAward.getPlayerName(),
-          playerAward.getAwardType(),
-          playerAward.getGoalsCount(),
-          playerAward.getAssistsCount(),
-          null,
-          null);
-    }
-
-    if (trophy instanceof TeamTrophy teamTrophy) {
-      return new TrophyDetailsDTO(
-          teamTrophy.getId(),
-          "TEAM",
-          teamTrophy.getSeason() != null ? teamTrophy.getSeason().getId() : null,
-          teamTrophy.getLeague() != null ? teamTrophy.getLeague().getId() : null,
-          teamTrophy.getCareer() != null ? teamTrophy.getCareer().getId() : null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          teamTrophy.getIsWinner(),
-          teamTrophy.getClassification());
-    }
-
-    return new TrophyDetailsDTO(
-        trophy.getId(),
-        "TROPHY",
-        trophy.getSeason() != null ? trophy.getSeason().getId() : null,
-        trophy.getLeague() != null ? trophy.getLeague().getId() : null,
-        trophy.getCareer() != null ? trophy.getCareer().getId() : null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null);
   }
 
   private String normalizeCategory(String category) {
@@ -198,6 +152,77 @@ public class TrophyService {
 
     return playerRepository.findById(playerId)
         .orElseThrow(() -> new ResourceNotFoundException("Jogador não encontrado."));
+  }
+
+  private SquadPlayer resolveSquadPlayer(TrophyRequestDTO data, Career career, Player player) {
+    if (data.squadPlayerId() != null) {
+      return findSquadPlayerFromCareer(data.squadPlayerId(), career);
+    }
+
+    if (player != null) {
+      return findOrCreateSquadPlayer(career, player);
+    }
+
+    return null;
+  }
+
+  private SquadPlayer findSquadPlayerFromCareer(Long squadPlayerId, Career career) {
+    SquadPlayer squadPlayer = squadPlayerRepository.findById(squadPlayerId)
+        .orElseThrow(() -> new ResourceNotFoundException("Jogador do elenco não encontrado."));
+
+    if (squadPlayer.getCareerSquad() == null
+        || squadPlayer.getCareerSquad().getCareer() == null
+        || !squadPlayer.getCareerSquad().getCareer().getId().equals(career.getId())) {
+      throw new IllegalArgumentException("O jogador informado não pertence ao elenco da carreira.");
+    }
+
+    return squadPlayer;
+  }
+
+  private SquadPlayer findOrCreateSquadPlayer(Career career, Player player) {
+    if (career.getSquad() == null) {
+      throw new IllegalArgumentException("A carreira informada não possui elenco cadastrado.");
+    }
+
+    return squadPlayerRepository.findByCareerSquadIdAndPlayerInfoId(career.getSquad().getId(), player.getId())
+        .orElseGet(() -> squadPlayerRepository.save(buildSquadPlayerFromCatalog(career, player)));
+  }
+
+  private SquadPlayer buildSquadPlayerFromCatalog(Career career, Player player) {
+    int age = 0;
+    if (player.getDateOfBirth() != null) {
+      age = player.getDateOfBirth().until(LocalDate.now()).getYears();
+    }
+
+    SquadPlayer squadPlayer = new SquadPlayer();
+    squadPlayer.setPlayerInfo(player);
+    squadPlayer.setCountry(player.getCountry());
+    squadPlayer.setCareerSquad(career.getSquad());
+    squadPlayer.setFullName(player.getFullName());
+    squadPlayer.setImage(player.getImage());
+    squadPlayer.setAge(age);
+    squadPlayer.setYearJoinedClub(career.getStartDate() != null ? career.getStartDate().getYear() : LocalDate.now().getYear());
+    squadPlayer.setStartingOverall(player.getOverall());
+    squadPlayer.setCurrentOverall(player.getOverall());
+    squadPlayer.setPotentialOverall(player.getPotential());
+    squadPlayer.setCurrentMarketValue(player.getValue() != null ? player.getValue() : 0L);
+    squadPlayer.setCurrentWage(player.getWage() != null ? player.getWage() : 0L);
+    squadPlayer.setKitNumber(player.getKitNumber());
+    squadPlayer.setIsYouthPlayer(false);
+    squadPlayer.setPreferredFoot(player.getPreferredFoot());
+    return squadPlayer;
+  }
+
+  private String resolvePlayerName(String requestedPlayerName, SquadPlayer squadPlayer, Player player) {
+    if (requestedPlayerName != null && !requestedPlayerName.isBlank()) {
+      return requestedPlayerName;
+    }
+
+    if (squadPlayer != null) {
+      return squadPlayer.getDisplayName();
+    }
+
+    return player != null ? player.getFullName() : null;
   }
 
   private void validateCareerOwnership(Long careerId, String username) {

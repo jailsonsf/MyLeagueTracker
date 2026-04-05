@@ -17,6 +17,10 @@ public class PlayerAward extends Trophy {
   @JoinColumn(name = "player_id", nullable = true)
   private Player player;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "squad_player_id", nullable = true)
+  private SquadPlayer squadPlayer;
+
   private String playerName;
 
   @Enumerated(EnumType.STRING)

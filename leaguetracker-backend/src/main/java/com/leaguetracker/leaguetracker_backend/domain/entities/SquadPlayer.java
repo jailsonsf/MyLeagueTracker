@@ -39,7 +39,7 @@ public class SquadPlayer {
   @JoinColumn(name = "career_squad_id", nullable = false)
   private CareerSquad careerSquad;
 
-  @OneToMany(mappedBy = "player")
+  @OneToMany(mappedBy = "squadPlayer")
   private List<PlayerAward> awards;
 
   private String fullName;

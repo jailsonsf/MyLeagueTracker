@@ -9,6 +9,7 @@ public record TrophyDetailsDTO(
     Long leagueId,
     Long careerId,
     Long playerId,
+    Long squadPlayerId,
     String playerName,
     IndividualAwardType awardType,
     Integer goalsCount,
