@@ -2,7 +2,6 @@ package com.leaguetracker.leaguetracker_backend.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +12,7 @@ import com.leaguetracker.leaguetracker_backend.dto.YouthPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.service.YouthPlayerService;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 @RestController
 @RequestMapping("/api/squad/youth-players")
+@RequiredArgsConstructor
 public class YouthPlayerController {
 
-  @Autowired
-  private YouthPlayerService youthPlayerService;
+  private final YouthPlayerService youthPlayerService;
 
   @GetMapping()
   public ResponseEntity<List<YouthPlayerDTO>> listAll(

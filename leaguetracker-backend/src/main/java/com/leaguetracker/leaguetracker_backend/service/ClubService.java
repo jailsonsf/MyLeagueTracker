@@ -3,7 +3,6 @@ package com.leaguetracker.leaguetracker_backend.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.Club;
@@ -13,12 +12,13 @@ import com.leaguetracker.leaguetracker_backend.dto.PlayerDTO;
 import com.leaguetracker.leaguetracker_backend.repository.ClubRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class ClubService {
 
-  @Autowired
-  private ClubRepository clubRepository;
+  private final ClubRepository clubRepository;
 
   public List<ClubDTO> getAllClubs() {
     return clubRepository.findAll().stream()

@@ -2,7 +2,6 @@ package com.leaguetracker.leaguetracker_backend.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -21,12 +20,14 @@ import com.leaguetracker.leaguetracker_backend.dto.TrophyDetailsDTO;
 import com.leaguetracker.leaguetracker_backend.dto.TrophyRequestDTO;
 import com.leaguetracker.leaguetracker_backend.service.TrophyService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/trophies")
+@RequiredArgsConstructor
 public class TrophyController {
 
-  @Autowired
-  private TrophyService trophyService;
+  private final TrophyService trophyService;
 
   @PostMapping
   public ResponseEntity<TrophyDetailsDTO> create(

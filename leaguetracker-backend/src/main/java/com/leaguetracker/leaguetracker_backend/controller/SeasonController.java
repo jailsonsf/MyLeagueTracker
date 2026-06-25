@@ -7,9 +7,10 @@ import com.leaguetracker.leaguetracker_backend.dto.SeasonDetailsDTO;
 import com.leaguetracker.leaguetracker_backend.dto.SeasonRequestDTO;
 import com.leaguetracker.leaguetracker_backend.service.SeasonService;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -21,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/season")
+@RequiredArgsConstructor
 public class SeasonController {
 
-  @Autowired
-  private SeasonService seasonService;
+  private final SeasonService seasonService;
 
   @PostMapping
   public ResponseEntity<SeasonDetailsDTO> create(

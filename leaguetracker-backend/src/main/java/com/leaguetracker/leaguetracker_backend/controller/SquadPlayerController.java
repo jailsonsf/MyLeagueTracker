@@ -1,6 +1,5 @@
 package com.leaguetracker.leaguetracker_backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,12 +10,14 @@ import com.leaguetracker.leaguetracker_backend.domain.entities.SquadPlayer;
 import com.leaguetracker.leaguetracker_backend.dto.SquadPlayerDTO;
 import com.leaguetracker.leaguetracker_backend.service.SquadPlayerService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/squad/players")
+@RequiredArgsConstructor
 public class SquadPlayerController {
 
-  @Autowired
-  private SquadPlayerService squadPlayerService;
+  private final SquadPlayerService squadPlayerService;
 
   @PostMapping()
   public ResponseEntity<SquadPlayerDTO> createOrUpdate(@RequestBody SquadPlayerDTO squadPlayerDTO) {

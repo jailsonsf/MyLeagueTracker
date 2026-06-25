@@ -1,6 +1,5 @@
 package com.leaguetracker.leaguetracker_backend.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.SquadPlayer;
@@ -11,18 +10,15 @@ import com.leaguetracker.leaguetracker_backend.repository.SquadPlayerRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class SquadPlayerService {
 
-  @Autowired
-  private SquadPlayerRepository squadPlayerRepository;
-
-  @Autowired
-  private CareerSquadRepository careerSquadRepository;
-
-  @Autowired
-  private CountryRepository countryRepository;
+  private final SquadPlayerRepository squadPlayerRepository;
+  private final CareerSquadRepository careerSquadRepository;
+  private final CountryRepository countryRepository;
 
   @Transactional
   public SquadPlayer saveOrUpdate(SquadPlayerDTO squadPlayerDTO) {

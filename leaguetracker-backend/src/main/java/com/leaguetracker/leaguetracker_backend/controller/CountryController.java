@@ -3,7 +3,6 @@ package com.leaguetracker.leaguetracker_backend.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,13 +14,14 @@ import com.leaguetracker.leaguetracker_backend.dto.CountryDTO;
 import com.leaguetracker.leaguetracker_backend.repository.CountryRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/countries")
+@RequiredArgsConstructor
 public class CountryController {
 
-  @Autowired
-  private CountryRepository countryRepository;
+  private final CountryRepository countryRepository;
 
   @GetMapping
   public ResponseEntity<List<CountryDTO>> getAllCountries() {

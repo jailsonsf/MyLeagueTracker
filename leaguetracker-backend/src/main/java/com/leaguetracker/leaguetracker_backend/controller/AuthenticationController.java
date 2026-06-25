@@ -1,6 +1,5 @@
 package com.leaguetracker.leaguetracker_backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +17,7 @@ import com.leaguetracker.leaguetracker_backend.repository.UserRepository;
 import com.leaguetracker.leaguetracker_backend.security.TokenService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,16 +25,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthenticationController {
 
-  @Autowired
-  private AuthenticationManager authenticationManager;
-
-  @Autowired
-  private UserRepository userRepository;
-
-  @Autowired
-  private TokenService tokenService;
+  private final AuthenticationManager authenticationManager;
+  private final UserRepository userRepository;
+  private final TokenService tokenService;
 
   @PostMapping("/login")
   public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {

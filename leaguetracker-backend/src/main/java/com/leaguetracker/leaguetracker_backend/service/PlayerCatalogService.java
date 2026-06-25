@@ -3,12 +3,12 @@ package com.leaguetracker.leaguetracker_backend.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import jakarta.persistence.criteria.Predicate;
+import lombok.RequiredArgsConstructor;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.Player;
 import com.leaguetracker.leaguetracker_backend.dto.PlayerDTO;
@@ -16,10 +16,10 @@ import com.leaguetracker.leaguetracker_backend.dto.PlayerSearchDTO;
 import com.leaguetracker.leaguetracker_backend.repository.PlayerRepository;
 
 @Service
+@RequiredArgsConstructor
 public class PlayerCatalogService {
 
-  @Autowired
-  private PlayerRepository playerRepository;
+  private final PlayerRepository playerRepository;
 
   public Page<PlayerDTO> search(PlayerSearchDTO filter, Pageable pageable) {
     Page<Player> players = playerRepository.findAll((root, query, cb) -> {

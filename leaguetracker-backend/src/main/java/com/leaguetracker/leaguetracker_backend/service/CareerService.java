@@ -2,7 +2,6 @@ package com.leaguetracker.leaguetracker_backend.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.Career;
@@ -21,24 +20,17 @@ import com.leaguetracker.leaguetracker_backend.repository.ClubRepository;
 import com.leaguetracker.leaguetracker_backend.repository.SquadPlayerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class CareerService {
 
-  @Autowired
-  private CareerRepository careerRepository;
-
-  @Autowired
-  private UserRepository userRepository;
-
-  @Autowired
-  private SquadPlayerRepository squadPlayerRepository;
-
-  @Autowired
-  private YouthPlayerService youthPlayerService;
-
-  @Autowired
-  private ClubRepository clubRepository;
+  private final CareerRepository careerRepository;
+  private final UserRepository userRepository;
+  private final SquadPlayerRepository squadPlayerRepository;
+  private final YouthPlayerService youthPlayerService;
+  private final ClubRepository clubRepository;
 
   public CareerDetailsDTO create(CareerDTO careerDTO, String username) {
     User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
@@ -46,7 +38,7 @@ public class CareerService {
     Club club = null;
     if (careerDTO.clubId() != null) {
       club = clubRepository.findById(careerDTO.clubId())
-        .orElseThrow(() -> new RuntimeException("Club not found"));
+          .orElseThrow(() -> new RuntimeException("Club not found"));
     }
 
     Career career = Career.builder()
@@ -65,13 +57,13 @@ public class CareerService {
 
     Career savedCareer = careerRepository.save(career);
 
-    String teamName = (savedCareer.getClub() != null) 
-                           ? savedCareer.getClub().getName() 
-                           : savedCareer.getTeamName();
+    String teamName = (savedCareer.getClub() != null)
+        ? savedCareer.getClub().getName()
+        : savedCareer.getTeamName();
 
-    String teamLogo = (savedCareer.getClub() != null) 
-                           ? savedCareer.getClub().getLogo()
-                           : savedCareer.getTeamLogo();
+    String teamLogo = (savedCareer.getClub() != null)
+        ? savedCareer.getClub().getLogo()
+        : savedCareer.getTeamLogo();
 
     return new CareerDetailsDTO(
         savedCareer.getId(),

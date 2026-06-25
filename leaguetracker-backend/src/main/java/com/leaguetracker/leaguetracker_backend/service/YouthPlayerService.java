@@ -3,7 +3,6 @@ package com.leaguetracker.leaguetracker_backend.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.CareerSquad;
@@ -18,23 +17,18 @@ import com.leaguetracker.leaguetracker_backend.repository.YouthPlayerRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class YouthPlayerService {
 
-  @Autowired
-  private YouthPlayerRepository youthPlayerRepository;
-
-  @Autowired
-  private SquadPlayerRepository squadPlayerRepository;
-
-  @Autowired
-  private CareerSquadRepository careerSquadRepository;
-
-  @Autowired
-  private CountryRepository countryRepository;
+  private final YouthPlayerRepository youthPlayerRepository;
+  private final SquadPlayerRepository squadPlayerRepository;
+  private final CareerSquadRepository careerSquadRepository;
+  private final CountryRepository countryRepository;
 
   public List<YouthPlayerDTO> findAllBySquad(Long careerSquadId, String username) {
     validateSquadOwnership(careerSquadId, username);

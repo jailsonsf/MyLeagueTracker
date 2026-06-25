@@ -12,7 +12,8 @@ import com.leaguetracker.leaguetracker_backend.dto.TransferDetailsDTO;
 import com.leaguetracker.leaguetracker_backend.dto.TransferRequestDTO;
 import com.leaguetracker.leaguetracker_backend.service.TransferService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -21,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/transfer")
+@RequiredArgsConstructor
 public class TransferController {
 
-  @Autowired
-  private TransferService transferService;
+  private final TransferService transferService;
 
   @PostMapping()
   public ResponseEntity<TransferDetailsDTO> createOrUpdate(

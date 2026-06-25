@@ -1,6 +1,5 @@
 package com.leaguetracker.leaguetracker_backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,17 +8,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.leaguetracker.leaguetracker_backend.service.LeagueImportService;
 import com.leaguetracker.leaguetracker_backend.service.PlayerImportService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 @RequestMapping("/api/import")
+@RequiredArgsConstructor
 public class ImportDataController {
 
-  @Autowired
-  private PlayerImportService playerImportService;
-
-  @Autowired
-  private LeagueImportService leagueImportService;
+  private final PlayerImportService playerImportService;
+  private final LeagueImportService leagueImportService;
 
   @PostMapping("/players")
   public ResponseEntity<String> importPlayersCsv(@RequestParam("file") MultipartFile file) {

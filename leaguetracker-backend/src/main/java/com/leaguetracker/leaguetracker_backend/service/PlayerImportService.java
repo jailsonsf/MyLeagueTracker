@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.Club;
@@ -21,20 +20,17 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class PlayerImportService {
 
-  @Autowired
-  private PlayerRepository playerRepository;
-
-  @Autowired
-  private ClubRepository clubRepository;
-
-  @Autowired
-  private CountryRepository countryRepository;
+  private final PlayerRepository playerRepository;
+  private final ClubRepository clubRepository;
+  private final CountryRepository countryRepository;
 
   @Transactional
   public void importCsv(InputStream inputStream) {

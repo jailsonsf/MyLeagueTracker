@@ -1,6 +1,5 @@
 package com.leaguetracker.leaguetracker_backend.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.Career;
@@ -19,27 +18,18 @@ import com.leaguetracker.leaguetracker_backend.repository.SquadPlayerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.TransferRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class TransferService {
 
-  @Autowired
-  private TransferRepository transferRepository;
-
-  @Autowired
-  private CareerRepository careerRepository;
-
-  @Autowired
-  private SeasonRepository seasonRepository;
-
-  @Autowired
-  private ClubRepository clubRepository;
-
-  @Autowired
-  private SquadPlayerRepository squadPlayerRepository;
-
-  @Autowired
-  private SquadPlayerService squadPlayerService;
+  private final TransferRepository transferRepository;
+  private final CareerRepository careerRepository;
+  private final SeasonRepository seasonRepository;
+  private final ClubRepository clubRepository;
+  private final SquadPlayerRepository squadPlayerRepository;
+  private final SquadPlayerService squadPlayerService;
 
   @Transactional
   public Transfer createOrUpdate(TransferRequestDTO data, String username) {

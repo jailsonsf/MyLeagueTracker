@@ -3,7 +3,6 @@ package com.leaguetracker.leaguetracker_backend.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.Career;
@@ -25,27 +24,18 @@ import com.leaguetracker.leaguetracker_backend.repository.SquadPlayerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.TrophyRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class TrophyService {
 
-  @Autowired
-  private TrophyRepository trophyRepository;
-
-  @Autowired
-  private CareerRepository careerRepository;
-
-  @Autowired
-  private SeasonRepository seasonRepository;
-
-  @Autowired
-  private LeagueRepository leagueRepository;
-
-  @Autowired
-  private PlayerRepository playerRepository;
-
-  @Autowired
-  private SquadPlayerRepository squadPlayerRepository;
+  private final TrophyRepository trophyRepository;
+  private final CareerRepository careerRepository;
+  private final SeasonRepository seasonRepository;
+  private final LeagueRepository leagueRepository;
+  private final PlayerRepository playerRepository;
+  private final SquadPlayerRepository squadPlayerRepository;
 
   @Transactional
   public Trophy createTrophy(TrophyRequestDTO data, String username) {
@@ -201,7 +191,8 @@ public class TrophyService {
     squadPlayer.setFullName(player.getFullName());
     squadPlayer.setImage(player.getImage());
     squadPlayer.setAge(age);
-    squadPlayer.setYearJoinedClub(career.getStartDate() != null ? career.getStartDate().getYear() : LocalDate.now().getYear());
+    squadPlayer
+        .setYearJoinedClub(career.getStartDate() != null ? career.getStartDate().getYear() : LocalDate.now().getYear());
     squadPlayer.setStartingOverall(player.getOverall());
     squadPlayer.setCurrentOverall(player.getOverall());
     squadPlayer.setPotentialOverall(player.getPotential());

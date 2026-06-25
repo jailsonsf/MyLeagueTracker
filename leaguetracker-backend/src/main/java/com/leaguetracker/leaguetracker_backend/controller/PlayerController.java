@@ -7,7 +7,8 @@ import com.leaguetracker.leaguetracker_backend.dto.PlayerDTO;
 import com.leaguetracker.leaguetracker_backend.dto.PlayerSearchDTO;
 import com.leaguetracker.leaguetracker_backend.service.PlayerCatalogService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -17,10 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/catalog/players")
+@RequiredArgsConstructor
 public class PlayerController {
 
-  @Autowired
-  private PlayerCatalogService playerService;
+  private final PlayerCatalogService playerService;
 
   @GetMapping
   public ResponseEntity<Page<PlayerDTO>> searchPlayers(PlayerSearchDTO search,

@@ -2,7 +2,6 @@ package com.leaguetracker.leaguetracker_backend.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leaguetracker.leaguetracker_backend.domain.entities.Career;
@@ -15,15 +14,14 @@ import com.leaguetracker.leaguetracker_backend.repository.CareerRepository;
 import com.leaguetracker.leaguetracker_backend.repository.SeasonRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class SeasonService {
 
-  @Autowired
-  private CareerRepository careerRepository;
-
-  @Autowired
-  private SeasonRepository seasonRepository;
+  private final CareerRepository careerRepository;
+  private final SeasonRepository seasonRepository;
 
   @Transactional
   public SeasonDetailsDTO createSeason(SeasonRequestDTO data, String username) {

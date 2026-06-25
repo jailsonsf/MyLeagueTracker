@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,17 +22,16 @@ import com.leaguetracker.leaguetracker_backend.repository.CountryRepository;
 import com.leaguetracker.leaguetracker_backend.repository.LeagueRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class LeagueImportService {
 
-  @Autowired
-  private LeagueRepository leagueRepository;
-
-  @Autowired
-  private CountryRepository countryRepository;
+  private final LeagueRepository leagueRepository;
+  private final CountryRepository countryRepository;
 
   private final RestTemplate restTemplate = new RestTemplate();
 

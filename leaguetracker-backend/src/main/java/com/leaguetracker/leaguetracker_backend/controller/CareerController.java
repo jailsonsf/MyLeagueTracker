@@ -8,9 +8,10 @@ import com.leaguetracker.leaguetracker_backend.dto.CareerDashboardDTO;
 import com.leaguetracker.leaguetracker_backend.dto.CareerDetailsDTO;
 import com.leaguetracker.leaguetracker_backend.service.CareerService;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -23,10 +24,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/careers")
+@RequiredArgsConstructor
 public class CareerController {
 
-  @Autowired
-  private CareerService careerService;
+  private final CareerService careerService;
 
   @PostMapping
   public ResponseEntity<CareerDetailsDTO> create(@RequestBody CareerDTO data, Authentication authentication) {
