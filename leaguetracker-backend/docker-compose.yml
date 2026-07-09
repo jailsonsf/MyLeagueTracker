@@ -4,11 +4,12 @@ services:
     container_name: postgres_leaguetracker
     restart: always
     environment:
-      POSTGRES_USER: leaguetracker_admin
-      POSTGRES_PASSWORD: leaguetracker_password
-      POSTGRES_DB: league_tracker
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT:-dev}
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -24,8 +25,8 @@ services:
       - db
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/league_tracker
-      SPRING_DATASOURCE_USERNAME: leaguetracker_admin
-      SPRING_DATASOURCE_PASSWORD: leaguetracker_password
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
     command: ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.devtools.restart.enabled=true"
 
 volumes:

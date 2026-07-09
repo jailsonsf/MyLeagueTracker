@@ -1,6 +1,6 @@
 # MyLeagueTracker
 
-MyLeagueTracker e uma API para acompanhar suas gameplays carreiras, temporadas, elencos, jogadores, transferencias e conquistas em ligas de futebol.
+MyLeagueTracker e uma API para acompanhar suas gameplays de modo carreira e as informações dela como: temporadas, elencos, jogadores, transferencias e conquistas em ligas de futebol.
 
 ## Tecnologias
 

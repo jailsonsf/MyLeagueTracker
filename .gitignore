@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 
 backup_*.sql
+application-dev.properties
+.env
