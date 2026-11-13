@@ -9,6 +9,7 @@ import type { RouterHistory } from '@tanstack/react-router';
 import { CentralSquadPage } from './features/careers/CentralSquadPage';
 import { DashboardPage } from './features/careers/DashboardPage';
 import { NewCareerPage } from './features/careers/NewCareerPage';
+import { YouthAcademyPage } from './features/careers/YouthAcademyPage';
 import { LoginPage } from './features/auth/LoginPage';
 import { RegisterPage } from './features/auth/RegisterPage';
 import { AuthenticatedLayout } from './routes/AuthenticatedLayout';
@@ -16,7 +17,6 @@ import { CareerLayout } from './routes/CareerLayout';
 import { GlobalLayout } from './routes/GlobalLayout';
 
 import { NotFoundPage } from './routes/NotFoundPage';
-import { YouthPlaceholderPage } from './routes/YouthPlaceholderPage';
 
 const rootRoute = createRootRoute({ notFoundComponent: NotFoundPage });
 
@@ -71,7 +71,7 @@ const squadRoute = createRoute({
 const youthRoute = createRoute({
   getParentRoute: () => careerRoute,
   path: '/youth',
-  component: YouthPlaceholderPage,
+  component: YouthAcademyPage,
 });
 
 export const routeTree = rootRoute.addChildren([

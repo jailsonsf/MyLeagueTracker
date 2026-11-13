@@ -1,12 +1,14 @@
 import { useQueries } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
-import {
-  searchCatalogPlayers,
-  type Position,
-  type SquadPlayer,
-} from '../../lib/api/client';
+import { searchCatalogPlayers, type Position } from '../../lib/api/client';
 import { matchPosition, normalizeName } from './enrichment';
+
+interface EnrichablePlayer {
+  id: number;
+  fullName: string;
+  currentOverall: number;
+}
 
 const MAX_CONCURRENT = 4;
 
@@ -33,7 +35,7 @@ function withSlot<T>(task: () => Promise<T>): Promise<T> {
   });
 }
 
-export function useSquadPositions(players: SquadPlayer[]): Map<number, Position[]> {
+export function useSquadPositions(players: EnrichablePlayer[]): Map<number, Position[]> {
   const queries = useQueries({
     queries: players.map((player) => ({
       queryKey: ['catalog-position', normalizeName(player.fullName)],

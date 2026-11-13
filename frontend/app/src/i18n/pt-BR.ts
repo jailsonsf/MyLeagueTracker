@@ -121,9 +121,14 @@ export const messages = {
     unknown: '—',
   },
   youth: {
+    eyebrow: 'Academia de base',
     title: 'Youth Academy',
-    countLabel: 'jovens na academia.',
-    comingSoon: 'A academia chega em breve.',
+    countLabel: 'jovens na academia',
+    total: 'Total de prospectos',
+    averagePotential: 'Potential médio',
+    featured: 'Maior potential',
+    emptyTitle: 'Academia vazia',
+    emptyBody: 'Nenhum jovem na academia desta carreira.',
   },
   newCareer: {
     title: 'Nova carreira',
