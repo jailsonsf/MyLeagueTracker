@@ -23,6 +23,7 @@ Frontend:
 - React 19 + TypeScript + Vite
 - Tailwind CSS v4
 - TanStack Router e TanStack Query
+- vite-plugin-pwa / Workbox
 - Vitest + Testing Library + MSW
 
 ## Estrutura do projeto
@@ -162,6 +163,13 @@ http://localhost:5173
 
 `VITE_API_URL` aponta para a API (default `http://localhost:8080`).
 
+O build gera um PWA instalavel: manifest, icones e service worker. O shell e as fontes sao precacheados; chamadas para `/api` e `/auth` nao sao cacheadas e ficam fora do fallback de navegacao. O service worker nao roda no `npm run dev`; use o preview do build:
+
+```bash
+npm run test:pwa   # build + validacao do manifest e do service worker
+npm run preview    # serve dist/ em http://localhost:4173
+```
+
 O backend libera por padrao a origem `http://localhost:5173`. Se o Vite usar outra porta (por exemplo `5174`), reinicie o backend com a origem extra. Rodando localmente, exporte antes de iniciar; no Compose, adicione `CORS_ALLOWED_ORIGINS` ao ambiente do servico `app`:
 
 ```bash
@@ -273,6 +281,7 @@ cd frontend/app
 npm test
 npm run typecheck
 npm run lint
+npm run test:pwa
 ```
 
 ## Build
@@ -299,4 +308,4 @@ cd frontend/app
 npm run build
 ```
 
-O bundle fica em `frontend/app/dist` e usa o `VITE_API_URL` definido no momento do build.
+O bundle fica em `frontend/app/dist` e usa o `VITE_API_URL` definido no momento do build. O mesmo build gera o manifest, os icones e o service worker do PWA.
