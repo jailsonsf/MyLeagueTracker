@@ -166,6 +166,8 @@ export interface AddSquadPlayerInput {
   role: PlayerRole;
 }
 
+export type AddYouthPlayerInput = AddSquadPlayerInput;
+
 export interface CatalogPlayer {
   id: number;
   fullName: string;
@@ -240,6 +242,25 @@ export function addSquadPlayer(player: AddSquadPlayerInput): Promise<SquadPlayer
       kitNumber: 0,
     },
   });
+}
+
+export function addYouthPlayer(player: AddYouthPlayerInput): Promise<YouthPlayer> {
+  return request<YouthPlayer>('/api/squad/youth-players', {
+    method: 'POST',
+    body: {
+      ...player,
+      image: null,
+      startingOverall: 0,
+      currentWage: 0,
+      heightCm: 0,
+      weightKg: 0,
+      kitNumber: 0,
+    },
+  });
+}
+
+export function promoteYouthPlayer(id: number): Promise<string> {
+  return request<string>(`/api/squad/youth-players/${id}/promote`, { method: 'POST' });
 }
 
 export function searchCatalogPlayers(fullName: string): Promise<PageResponse<CatalogPlayer>> {

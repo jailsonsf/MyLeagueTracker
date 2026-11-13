@@ -5,10 +5,12 @@ import { server } from '../../test/msw/server';
 import { setAuthToken, setUnauthorizedHandler } from './authBridge';
 import {
   API_URL,
+  addYouthPlayer,
   createCareer,
   getCareers,
   getClubs,
   login,
+  promoteYouthPlayer,
   registerAccount,
 } from './client';
 
@@ -100,6 +102,66 @@ describe('api client', () => {
         budget: 1000,
       }),
     ).resolves.toEqual(career);
+  });
+
+  it('adds a youth player', async () => {
+    const youth = {
+      id: 20,
+      fullName: 'Novo Jovem',
+      startingOverall: 0,
+      currentOverall: 60,
+      potentialOverall: 88,
+      currentMarketValue: 0,
+      currentWage: 0,
+      image: null,
+      heightCm: 0,
+      weightKg: 0,
+      age: 18,
+      yearJoinedClub: 2026,
+      preferredFoot: 'RIGHT',
+      kitNumber: 0,
+      countryId: null,
+      careerSquadId: 42,
+      role: 'PROSPECT',
+    };
+
+    server.use(
+      http.post(`${API_URL}/api/squad/youth-players`, async ({ request }) => {
+        expect(await request.json()).toMatchObject({
+          fullName: 'Novo Jovem',
+          careerSquadId: 42,
+          countryId: null,
+        });
+        return HttpResponse.json(youth);
+      }),
+    );
+
+    await expect(
+      addYouthPlayer({
+        fullName: 'Novo Jovem',
+        age: 18,
+        yearJoinedClub: 2026,
+        currentOverall: 60,
+        potentialOverall: 88,
+        currentMarketValue: 0,
+        preferredFoot: 'RIGHT',
+        countryId: null,
+        careerSquadId: 42,
+        role: 'PROSPECT',
+      }),
+    ).resolves.toEqual(youth);
+  });
+
+  it('promotes a youth player', async () => {
+    server.use(
+      http.post(`${API_URL}/api/squad/youth-players/20/promote`, () =>
+        HttpResponse.text('Jogador promovido com sucesso ao elenco principal!'),
+      ),
+    );
+
+    await expect(promoteYouthPlayer(20)).resolves.toBe(
+      'Jogador promovido com sucesso ao elenco principal!',
+    );
   });
 
   it('registers an account and returns the API message', async () => {
