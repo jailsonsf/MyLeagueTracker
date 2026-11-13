@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#ffffff",
+                        "secondary-container": "#532f9b",
+                        "error": "#ff7351",
+                        "on-tertiary-container": "#004d57",
+                        "primary-fixed": "#a2f31f",
+                        "surface-container-lowest": "#000000",
+                        "background": "#0e0e0e",
+                        "surface-container-high": "#20201f",
+                        "secondary-dim": "#ad8afb",
+                        "inverse-primary": "#436a00",
+                        "primary": "#bcff5f",
+                        "on-secondary-container": "#dac8ff",
+                        "on-tertiary-fixed-variant": "#005762",
+                        "inverse-on-surface": "#565555",
+                        "tertiary-container": "#00e3fd",
+                        "surface-variant": "#262626",
+                        "on-surface-variant": "#adaaaa",
+                        "tertiary-dim": "#00d4ec",
+                        "on-secondary-fixed-variant": "#5d3aa6",
+                        "error-container": "#b92902",
+                        "on-error-container": "#ffd2c8",
+                        "tertiary-fixed-dim": "#00d4ec",
+                        "outline": "#767575",
+                        "secondary-fixed-dim": "#cfb9ff",
+                        "on-primary": "#3d6100",
+                        "secondary-fixed": "#dbc9ff",
+                        "primary-container": "#a2f31f",
+                        "surface-container-low": "#131313",
+                        "on-secondary": "#2c006d",
+                        "on-background": "#ffffff",
+                        "on-error": "#450900",
+                        "primary-fixed-dim": "#95e400",
+                        "on-primary-fixed": "#294300",
+                        "error-dim": "#d53d18",
+                        "on-tertiary-fixed": "#003840",
+                        "surface-dim": "#0e0e0e",
+                        "surface-tint": "#bcff5f",
+                        "on-primary-container": "#365700",
+                        "on-tertiary": "#005762",
+                        "outline-variant": "#484847",
+                        "tertiary": "#81ecff",
+                        "surface-container": "#1a1a1a",
+                        "surface": "#0e0e0e",
+                        "tertiary-fixed": "#00e3fd",
+                        "surface-container-highest": "#262626",
+                        "surface-bright": "#2c2c2c",
+                        "on-primary-fixed-variant": "#3d6200",
+                        "on-secondary-fixed": "#401788",
+                        "primary-dim": "#95e400",
+                        "secondary": "#af8dfe",
+                        "inverse-surface": "#fcf9f8"
+                    },
+                    fontFamily: {
+                        "headline": ["Epilogue"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #bcff5f;
+        }
+        .glass-panel {
+            background: rgba(38, 38, 38, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .machined-gradient {
+            background: linear-gradient(145deg, #bcff5f 0%, #a2f31f 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-20 pb-8 bg-[#0e0e0e] w-64 z-40 hidden md:flex">
+<div class="px-6 mb-10 flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest overflow-hidden">
+<img alt="CARLO ANCELOTTI" data-alt="professional portrait of an elite football manager in a sharp black suit with silver hair and a thoughtful expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgAocWp-AqYWawta6K1W_djlRj1Tw0s6w5ywUfG335rK1nW_2aeNw1ungCdxFreUrLSXU4tQWTe10e1JB8nMMzkgJXnKRGitTipSn71fD6p1_fetakyC9Gxq59_xV5ciyhtfsJJQt9D6wN5iD2QnKjZ7PM_cY6oG3nPl_OFiH-_gb4ulD4w5kLqzssNPQVicPZfDmXqMyAHzGbuooETkjrpRRcRjGto-4jAbLOlezSTTUVq8eVUsAuXB4rKzB0ejCK2XW2dlAVWZVT"/>
+</div>
+<div>
+<p class="font-headline font-bold text-sm tracking-tight text-on-surface">CARLO ANCELOTTI</p>
+<p class="font-label text-xs text-on-surface-variant">Manager</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 bg-[#1a1a1a] text-[#bcff5f] border-l-4 border-[#bcff5f] px-6 py-4 w-full transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label text-sm">Squad</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label text-sm">Youth Academy</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-label text-sm">Transfers</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label text-sm">Stats</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label text-sm">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 bg-surface-container-high hover:bg-surface-bright text-primary text-xs font-bold rounded-lg transition-all tracking-widest uppercase">
+                ADVANCE CALENDAR
+            </button>
+</div>
+</aside>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 right-0 bg-[#0e0e0e] z-50 shadow-[0_40px_40px_-15px_rgba(175,141,254,0.06)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<h1 class="text-xl font-black uppercase tracking-tighter text-white">REAL MADRID C.F.</h1>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-[#bcff5f] font-bold border-b-2 border-[#bcff5f] pb-1 font-label text-xs uppercase tracking-widest" href="#">Squad</a>
+<a class="text-gray-400 font-medium hover:text-white font-label text-xs uppercase tracking-widest transition-all" href="#">Academy</a>
+<a class="text-gray-400 font-medium hover:text-white font-label text-xs uppercase tracking-widest transition-all" href="#">Transfers</a>
+<a class="text-gray-400 font-medium hover:text-white font-label text-xs uppercase tracking-widest transition-all" href="#">Stats</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex flex-col items-end">
+<span class="text-xs font-bold text-primary tracking-tighter">SAVE: GALACTICOS_25</span>
+<span class="text-[10px] text-on-surface-variant font-label">JULY 15, 2024</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden ml-2 border border-outline-variant">
+<img alt="Club Crest" data-alt="official gold and blue real madrid club crest with detailed embroidery texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxTB0RA8lgFA3HC56n-NTpKqhiInltWOkiEd6uMql-25To2XgR2HebBo2TLMR-1ZEK4jcXA6iZO3s5-EqD6hjAhXWszmYX6Ei5jYTO99tkjynUs2X16hgChO6qlKC4zTn31bz9uOKVpae-jBGEpqs3fiZiJY0yRTxTi5nrU5_apB4hNRehMmUd294oIDBU2VQ7Z3YSjZXxpIm6-15MfaRtVd2oNeZ_3e6w2EV6sgd-C8G5cWeW-TThsF_lMPWlYOcM2udNTJH2iWWR"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-12 pl-0 md:pl-64 min-h-screen">
+<div class="max-w-[1600px] mx-auto px-6 lg:px-12 grid grid-cols-12 gap-10">
+<!-- Left Side: Player List -->
+<section class="col-span-12 lg:col-span-4 flex flex-col h-[calc(100vh-160px)]">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-3xl font-extrabold tracking-tight">SQUAD HUB</h2>
+<button class="machined-gradient text-on-primary-fixed px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2 hover:scale-105 transition-transform active:scale-95 shadow-[0_10px_20px_-5px_rgba(188,255,95,0.4)]">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                        ADD PLAYER
+                    </button>
+</div>
+<div class="flex-1 overflow-y-auto pr-4 custom-scrollbar space-y-3">
+<!-- Player Item (Active) -->
+<div class="bg-surface-bright border-l-4 border-primary p-4 flex items-center gap-4 transition-all group">
+<div class="font-headline font-black text-2xl text-primary/40 group-hover:text-primary transition-colors">07</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-primary uppercase tracking-widest">LW</p>
+<p class="font-headline font-bold text-on-surface">VINÍCIUS JÚNIOR</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black font-headline">91</p>
+<div class="flex gap-1 justify-end">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+</div>
+</div>
+<!-- Player Item -->
+<div class="bg-surface-container-low hover:bg-surface-container p-4 flex items-center gap-4 transition-all cursor-pointer">
+<div class="font-headline font-black text-2xl text-on-surface-variant/30">05</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">CM</p>
+<p class="font-headline font-bold text-on-surface">JUDE BELLINGHAM</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black font-headline text-on-surface-variant">90</p>
+<div class="flex gap-1 justify-end">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant/20"></span>
+</div>
+</div>
+</div>
+<!-- More Players -->
+<div class="bg-surface-container-low hover:bg-surface-container p-4 flex items-center gap-4 transition-all cursor-pointer">
+<div class="font-headline font-black text-2xl text-on-surface-variant/30">09</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">ST</p>
+<p class="font-headline font-bold text-on-surface">KYLIAN MBAPPÉ</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black font-headline text-on-surface-variant">92</p>
+<div class="flex gap-1 justify-end">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low hover:bg-surface-container p-4 flex items-center gap-4 transition-all cursor-pointer">
+<div class="font-headline font-black text-2xl text-on-surface-variant/30">08</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">CM</p>
+<p class="font-headline font-bold text-on-surface">FEDERICO VALVERDE</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black font-headline text-on-surface-variant">88</p>
+<div class="flex gap-1 justify-end">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant/20"></span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low hover:bg-surface-container p-4 flex items-center gap-4 transition-all cursor-pointer">
+<div class="font-headline font-black text-2xl text-on-surface-variant/30">22</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">CB</p>
+<p class="font-headline font-bold text-on-surface">ANTONIO RÜDIGER</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black font-headline text-on-surface-variant">87</p>
+<div class="flex gap-1 justify-end">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant/20"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant/20"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Detailed Profile -->
+<section class="col-span-12 lg:col-span-8 relative">
+<div class="h-full flex flex-col gap-8">
+<!-- Player Render Header -->
+<div class="relative h-[450px] bg-gradient-to-tr from-surface-container-low to-secondary/10 rounded-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(175,141,254,0.1),transparent_70%)]"></div>
+<img alt="VINÍCIUS JÚNIOR" class="absolute bottom-0 right-0 h-full object-contain object-bottom scale-110 group-hover:scale-115 transition-transform duration-700" data-alt="dynamic high-action render of vinicius junior in the 2024 real madrid white kit celebrating with a bright focused expression and cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpNMAglQIbmBpBS2s6tMo-SW0cXZ_Bir1EUpzgP2oNpfX88dQpKL1Z0_7mv22YB12g10RsDxGFn3iOxEjMIcqesWI0qDiv0ZOdvzsvlB-s5Ur9X_SokaRYCE0G4tcscWamRNOuk5lQsvV3UVprA8KEu7VQVUDwDg_1p4PfWTNwe5cuDdg8AtC6c1KR3RqqFUwks_K67ZQmxrmB0Yf1gmShyx67yaT0yoSeRnJly6c0ovaBrzugPMhHnx1i7WC4FXJH7-sOns8qGevq"/>
+<div class="absolute inset-0 p-10 flex flex-col justify-end">
+<div class="relative z-10">
+<div class="flex items-end gap-4 mb-2">
+<h3 class="font-headline font-black text-7xl lg:text-8xl leading-[0.8] tracking-tighter text-on-surface">VINÍCIUS<br/>JÚNIOR</h3>
+<div class="bg-primary text-on-primary px-3 py-1 rounded font-black font-headline text-3xl">91</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-primary tracking-widest">Position</span>
+<span class="font-bold">Left Winger</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-primary tracking-widest">Happiness</span>
+<div class="flex items-center gap-2">
+<span class="font-bold">Very Happy</span>
+<span class="material-symbols-outlined text-primary text-sm">sentiment_very_satisfied</span>
+</div>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-primary tracking-widest">Contract</span>
+<span class="font-bold">2027 (Crucial)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Info -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Attributes -->
+<div class="col-span-12 md:col-span-7 bg-surface-container-low rounded-2xl p-6">
+<h4 class="font-headline font-bold text-xs uppercase tracking-widest text-on-surface-variant mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">analytics</span>
+                                Core Attributes
+                            </h4>
+<div class="grid grid-cols-2 gap-x-10 gap-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>PAC</span>
+<span class="text-primary">95</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary relative" style="width: 95%">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-20 animate-pulse"></div>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>DRI</span>
+<span class="text-primary">91</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 91%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>SHO</span>
+<span class="text-secondary">82</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 82%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>PAS</span>
+<span class="text-secondary">79</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 79%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>PHY</span>
+<span class="text-secondary">68</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 68%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>DEF</span>
+<span class="text-error-dim">29</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error-dim" style="width: 29%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Status & Stats -->
+<div class="col-span-12 md:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-low rounded-2xl p-6 flex-1">
+<h4 class="font-headline font-bold text-xs uppercase tracking-widest text-on-surface-variant mb-4">Current Status</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-surface-container-highest p-3 rounded-xl border-l-2 border-primary">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<div>
+<p class="text-xs font-bold">Match Sharpness</p>
+<p class="text-[10px] text-on-surface-variant">Optimal Performance (100%)</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-highest p-3 rounded-xl border-l-2 border-secondary">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<div>
+<p class="text-xs font-bold">Development Plan</p>
+<p class="text-[10px] text-on-surface-variant">Focus: Clinical Finishing</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Quick View -->
+<div class="bg-secondary/20 rounded-2xl p-6 glass-panel border border-secondary/10">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-1">Value</p>
+<p class="font-headline font-bold text-2xl">€185.0M</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-1">Wage</p>
+<p class="font-headline font-bold text-2xl">€350K</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Navigation Shell -->
+<nav class="fixed bottom-0 left-0 right-0 bg-[#0e0e0e] z-50 md:hidden flex justify-around items-center px-4 py-3">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-[10px] font-bold">Squad</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-bold">Academy</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-[10px] font-bold">Transfers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-[10px] font-bold">Stats</span>
+</a>
+</nav>
+</body></html>

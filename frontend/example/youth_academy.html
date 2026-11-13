@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#ffffff",
+                        "secondary-container": "#532f9b",
+                        "error": "#ff7351",
+                        "on-tertiary-container": "#004d57",
+                        "primary-fixed": "#a2f31f",
+                        "surface-container-lowest": "#000000",
+                        "background": "#0e0e0e",
+                        "surface-container-high": "#20201f",
+                        "secondary-dim": "#ad8afb",
+                        "inverse-primary": "#436a00",
+                        "primary": "#bcff5f",
+                        "on-secondary-container": "#dac8ff",
+                        "on-tertiary-fixed-variant": "#005762",
+                        "inverse-on-surface": "#565555",
+                        "tertiary-container": "#00e3fd",
+                        "surface-variant": "#262626",
+                        "on-surface-variant": "#adaaaa",
+                        "tertiary-dim": "#00d4ec",
+                        "on-secondary-fixed-variant": "#5d3aa6",
+                        "error-container": "#b92902",
+                        "on-error-container": "#ffd2c8",
+                        "tertiary-fixed-dim": "#00d4ec",
+                        "outline": "#767575",
+                        "secondary-fixed-dim": "#cfb9ff",
+                        "on-primary": "#3d6100",
+                        "secondary-fixed": "#dbc9ff",
+                        "primary-container": "#a2f31f",
+                        "surface-container-low": "#131313",
+                        "on-secondary": "#2c006d",
+                        "on-background": "#ffffff",
+                        "on-error": "#450900",
+                        "primary-fixed-dim": "#95e400",
+                        "on-primary-fixed": "#294300",
+                        "error-dim": "#d53d18",
+                        "on-tertiary-fixed": "#003840",
+                        "surface-dim": "#0e0e0e",
+                        "surface-tint": "#bcff5f",
+                        "on-primary-container": "#365700",
+                        "on-tertiary": "#005762",
+                        "outline-variant": "#484847",
+                        "tertiary": "#81ecff",
+                        "surface-container": "#1a1a1a",
+                        "surface": "#0e0e0e",
+                        "tertiary-fixed": "#00e3fd",
+                        "surface-container-highest": "#262626",
+                        "surface-bright": "#2c2c2c",
+                        "on-primary-fixed-variant": "#3d6200",
+                        "on-secondary-fixed": "#401788",
+                        "primary-dim": "#95e400",
+                        "secondary": "#af8dfe",
+                        "inverse-surface": "#fcf9f8"
+                    },
+                    fontFamily: {
+                        "headline": ["Epilogue"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(38, 38, 38, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .shimmer-bar::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(188, 255, 95, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<header class="bg-[#0e0e0e] fixed top-0 z-50 w-full shadow-[0_40px_40px_-15px_rgba(175,141,254,0.06)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black uppercase tracking-tighter text-white">REAL MADRID C.F.</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-gray-400 font-medium hover:text-white transition-all duration-300 ease-in-out" href="#">SAVE: GALACTICOS_25</a>
+<a class="text-gray-400 font-medium hover:text-white transition-all duration-300 ease-in-out" href="#">JULY 15, 2024</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-10 w-10 rounded-xl overflow-hidden bg-surface-container">
+<img alt="Club Crest" data-alt="Official Real Madrid Club Crest with intricate gold and blue detailing on a white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdHHwjfZzUDsFGRwooNblro3VO69AtugR2ceelF7GPbH4sdg4fGFSuK75uy6xaFdpG4Sh1Ostijr2CkA3SiihMJ0PD_Ohlkyiy1oyx0n6gZVHypf37zBFIXH2isHzdUaRkrLeA75emx9zQY-G7xFhszJ8XUf0Vij2370QiCFBREdJ54pYHJmoteu9r9Z6kUKHmdLDpUA3o-CYG1I0bCJ15zee_Sfjfh28jgWui-CyXhtXvRWQraH6bnDVtZd3DrSGm21cCBECryKlD"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#0e0e0e] pt-20 pb-8 flex flex-col z-40">
+<div class="px-6 py-8 flex items-center gap-4">
+<div class="h-12 w-12 rounded-xl bg-surface-container overflow-hidden">
+<img alt="Manager Portrait" data-alt="Professional portrait of a football manager with silver hair in a sharp black suit against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAguo-NHnn9V7VCWZgVUo5IV8oMS8QDGd-qEGETZer20DtGwSpKcFxOaymWizL-32oQIwyPsLlFrhSiW1XIHXTB4cDjgT28lBHP17c9c-KliT8GAt_38rm8nK6_K3TXvX_3ZVhbrIeeDe2DTsYsjBaFztq-JxI8RoRjlmidMaffM_zuyN2Prd9pX-K2iEV62i0YT4Txqd-Tdv54e5s1JurXBKfwJyb6EM3YHskIzBzVXkaBuQ6P_TgLiq8pcoFG67rV8ff_3HMQbQRS"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-sm tracking-tight">CARLO ANCELOTTI</h3>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Manager</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm font-medium">Squad</span>
+</a>
+<a class="flex items-center gap-4 bg-[#1a1a1a] text-[#bcff5f] border-l-4 border-[#bcff5f] px-6 py-4 w-full" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-sm font-medium">Youth Academy</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-sm font-medium">Transfers</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-sm font-medium">Stats</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary text-on-primary-fixed font-bold py-3 rounded-xl scale-95 active:scale-90 transition-transform uppercase tracking-tighter text-sm">
+                ADVANCE CALENDAR
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 min-h-screen px-10 pb-12 bg-surface">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-12">
+<div class="space-y-2">
+<h1 class="font-headline text-5xl font-black italic tracking-tighter uppercase text-on-surface">Youth Academy</h1>
+<p class="text-on-surface-variant font-medium">Developing the next generation of Galácticos</p>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-highest px-6 py-4 rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-all duration-300">
+<span class="material-symbols-outlined text-primary">person_add</span>
+<span class="font-bold text-sm">ADD YOUTH PLAYER</span>
+</button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Academy Stats Glass Card -->
+<div class="col-span-12 lg:col-span-4 glass-panel rounded-full p-8 relative overflow-hidden flex flex-col justify-between h-80">
+<div class="absolute -top-10 -right-10 opacity-10">
+<span class="material-symbols-outlined text-[180px] text-secondary">school</span>
+</div>
+<div>
+<span class="text-primary font-black text-xs tracking-[0.2em] uppercase">Academy Overview</span>
+<h2 class="font-headline text-3xl font-bold mt-2">La Fábrica</h2>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm">Total Prospects</span>
+<span class="font-headline font-bold text-2xl">18</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm">Avg. Potential</span>
+<span class="font-headline font-bold text-2xl text-tertiary">89</span>
+</div>
+</div>
+</div>
+<!-- Featured Prospect Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-full p-8 flex gap-8 items-center border border-outline-variant/5">
+<div class="relative">
+<div class="h-48 w-48 rounded-xl bg-gradient-to-br from-secondary-container/30 to-surface-container-highest overflow-hidden relative">
+<img alt="Top Prospect" class="absolute bottom-0 scale-110" data-alt="High-detail render of a teenage football prospect in a white training kit with determined expression, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx0L0R59LD2M-Rle6wg0ljs8UJoJ2lJrF2Mnv-oID8Fcx_pYpqOE47Wg2gLmRJf6qk00JOx5hLQ581djcQGils69Pt6pDGoH4lTvQYZXNh42kysvAJ1p3EetEl_3gODD6nhD_xkY3C0ZM_78Hd1AlAKzbpzp3LMpLPSLxEBiy35NDmMi9ljHvkqGy8M38f4Q9TZwJAcFUYBlwFp0gc_OmkBfM2YRaC2TEhJgS7k5DSGmZVsqPOjvp-eJ7zKXqbd7JC1QZDlULQNzQo"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-on-primary-fixed font-black h-12 w-12 flex items-center justify-center rounded-xl shadow-lg">
+                        74
+                    </div>
+</div>
+<div class="flex-1 space-y-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-error px-2 py-0.5 rounded text-[10px] font-black uppercase">Elite Potential</span>
+<span class="text-on-surface-variant text-xs font-bold">16 Years Old</span>
+</div>
+<h3 class="font-headline text-4xl font-black tracking-tighter">MATEO VALENCIA</h3>
+<p class="text-on-surface-variant font-medium">Central Midfielder (CM)</p>
+</div>
+<div class="flex gap-12">
+<div>
+<span class="text-[10px] text-on-surface-variant font-black uppercase block mb-1">Potential Range</span>
+<span class="font-headline text-2xl font-bold text-primary italic">91 - 94</span>
+</div>
+<div>
+<span class="text-[10px] text-on-surface-variant font-black uppercase block mb-1">Training Plan</span>
+<span class="font-headline text-2xl font-bold text-on-surface italic">Playmaker</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Youth Player List Section -->
+<div class="col-span-12 space-y-4">
+<div class="flex items-center justify-between px-6 mb-2">
+<span class="text-[10px] font-black text-on-surface-variant uppercase tracking-widest">Player Details</span>
+<div class="flex gap-20 pr-48">
+<span class="text-[10px] font-black text-on-surface-variant uppercase tracking-widest w-12 text-center">OVR</span>
+<span class="text-[10px] font-black text-on-surface-variant uppercase tracking-widest w-24 text-center">POTENTIAL</span>
+<span class="text-[10px] font-black text-on-surface-variant uppercase tracking-widest w-32 text-center">PLAN</span>
+</div>
+</div>
+<!-- Player Row 1 -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-full p-4 flex items-center justify-between border-l-4 border-transparent hover:border-primary">
+<div class="flex items-center gap-6">
+<div class="h-14 w-14 rounded-xl bg-surface-container-highest overflow-hidden">
+<img alt="Prospect" data-alt="Headshot of a young athlete with curly hair, serious expression, high-end studio lighting on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAus2UB1VbkLQeu_E2IV6XRklmZgrO7hJWCtig9r1e_sZpcsscpwzL1mvmT_X2rK45hrROahwR2xaSJr3Epa0Hquksi7gViqhtOZI0dZdVnNagBM3AlZkKPfEWqbPSGQ4QlfLQhgrEG9YJygtGEZjd4UeU-IN3hHvkZwfFthRnCDHt4euHNVHWhnS-XFrRlg0PaDrSH6saMlafIDwaBkN2GGAjpAwaYr-x1ZZKGFR9J_bll47vWw6H12I581si02alW3DgB530qaT5n"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg leading-tight">LUCAS NAVARRO</h4>
+<p class="text-xs text-on-surface-variant font-bold uppercase">17y • Spain • ST</p>
+</div>
+</div>
+<div class="flex items-center gap-20">
+<div class="w-12 text-center">
+<span class="font-headline font-black text-xl">68</span>
+</div>
+<div class="w-24 text-center">
+<div class="bg-surface-container-highest h-1.5 rounded-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full w-[88%] bg-secondary shimmer-bar"></div>
+</div>
+<span class="text-[10px] font-black text-secondary mt-1 block">85-88</span>
+</div>
+<div class="w-32 text-center">
+<span class="text-xs font-bold px-3 py-1 rounded bg-surface-container-highest text-on-surface-variant">Target Man</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-on-primary-fixed transition-colors" title="Promote to First Team">
+<span class="material-symbols-outlined">trending_up</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" title="Change Training Plan">
+<span class="material-symbols-outlined">edit_note</span>
+</button>
+<button class="p-2 rounded-lg bg-error/10 text-error hover:bg-error hover:text-white transition-colors" title="Release">
+<span class="material-symbols-outlined">person_remove</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Player Row 2 -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-full p-4 flex items-center justify-between border-l-4 border-transparent hover:border-primary">
+<div class="flex items-center gap-6">
+<div class="h-14 w-14 rounded-xl bg-surface-container-highest overflow-hidden">
+<img alt="Prospect" data-alt="Action shot of a young player smiling, short dark hair, wearing a white sports jersey, professional athletic photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa7HH2IbVUahsZmrFd4hhy-IeZztsGiumxofeJb4rmwjYBKEhFh9SOk2b-K38sEOjUSTfLlfRExqVVMfBUKSxOzlZ-Q1zz45eF1JjaXMPn7z1PduD8DCidYeGIQg6i9t_bCTmzFccFNPgTQx40Y60BA07w2BOfKSpzYknttoy7rnG9UmcfNNCCx8iIYH9EKO7qts_wSpksHy6q1FpO6HCirdZRhWR-YcgvxDBH4pbAqsligZd0-ieDZW1qWXgu2RwIYcWgXRKeVMBH"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg leading-tight">ARTHUR MOURA</h4>
+<p class="text-xs text-on-surface-variant font-bold uppercase">15y • Brazil • LW</p>
+</div>
+</div>
+<div class="flex items-center gap-20">
+<div class="w-12 text-center">
+<span class="font-headline font-black text-xl">62</span>
+</div>
+<div class="w-24 text-center">
+<div class="bg-surface-container-highest h-1.5 rounded-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full w-[94%] bg-primary shimmer-bar"></div>
+</div>
+<span class="text-[10px] font-black text-primary mt-1 block">90-94</span>
+</div>
+<div class="w-32 text-center">
+<span class="text-xs font-bold px-3 py-1 rounded bg-surface-container-highest text-on-surface-variant">Inverted Winger</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-on-primary-fixed transition-colors" title="Promote to First Team">
+<span class="material-symbols-outlined">trending_up</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" title="Change Training Plan">
+<span class="material-symbols-outlined">edit_note</span>
+</button>
+<button class="p-2 rounded-lg bg-error/10 text-error hover:bg-error hover:text-white transition-colors" title="Release">
+<span class="material-symbols-outlined">person_remove</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Player Row 3 -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-full p-4 flex items-center justify-between border-l-4 border-transparent hover:border-primary">
+<div class="flex items-center gap-6">
+<div class="h-14 w-14 rounded-xl bg-surface-container-highest overflow-hidden">
+<img alt="Prospect" data-alt="Portrait of a focused young blonde athlete, dramatic shadow play, wearing high-performance athletic apparel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBonahR4lcvivB2oBBmvooeGwiOxAu08YLqSzK60i-KENAb8xcU47Jhw8Ql6xB4I-DY9IwREewmaruUNqfcfTcKHriVQ5mOVD3njbawDK1qhV3t3gkz-ueM7EjPXsmS13lZPBMt-LMCNuqusTPUq_4zNRE1t5WfdLsxwP_qOPhVz_PYYINe0FZEu21ybiLjJu_hJpwgo3G-lbJUgHzlZ8HRtWUrS6pflqFXFy4ioxD1_WkfRqu3SeHeGMv5ZCf9q3zDSJSdjPWi7pxq"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg leading-tight">ERIK NILSSON</h4>
+<p class="text-xs text-on-surface-variant font-bold uppercase">17y • Sweden • CB</p>
+</div>
+</div>
+<div class="flex items-center gap-20">
+<div class="w-12 text-center">
+<span class="font-headline font-black text-xl">71</span>
+</div>
+<div class="w-24 text-center">
+<div class="bg-surface-container-highest h-1.5 rounded-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full w-[85%] bg-secondary shimmer-bar"></div>
+</div>
+<span class="text-[10px] font-black text-secondary mt-1 block">82-85</span>
+</div>
+<div class="w-32 text-center">
+<span class="text-xs font-bold px-3 py-1 rounded bg-surface-container-highest text-on-surface-variant">Ball Winning</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-on-primary-fixed transition-colors" title="Promote to First Team">
+<span class="material-symbols-outlined">trending_up</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" title="Change Training Plan">
+<span class="material-symbols-outlined">edit_note</span>
+</button>
+<button class="p-2 rounded-lg bg-error/10 text-error hover:bg-error hover:text-white transition-colors" title="Release">
+<span class="material-symbols-outlined">person_remove</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Player Row 4 (Low potential example) -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-full p-4 flex items-center justify-between border-l-4 border-transparent hover:border-primary">
+<div class="flex items-center gap-6">
+<div class="h-14 w-14 rounded-xl bg-surface-container-highest overflow-hidden opacity-50">
+<img alt="Prospect" data-alt="Portrait of a young football player in neutral lighting, simple background, clean athletic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDKQt6QFlyYowAVjf12-EIQGntpE0nZFPCaUG6QdAedtGtUEu1SPNZmPvZwwojIADwlCHCgojI0NoWIESnrPa_XOYtsxuFCCAFHnUjwvPvv4Z7zxEIzmzxFnexypG7MeWvQ2cBLUHatWB1t8nGPhAazcLDiFU2_rpL6bJABOEBaGomESgIdovYWWjE0vy0h9Ag0wOxDGwsyA8tICrM2kClfeDAUC8QzcByfi2hNQkJTriNaca0aVjPEJQlau5nbDmXzNmISzi4_kaO"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg leading-tight">HUGO BOSSART</h4>
+<p class="text-xs text-on-surface-variant font-bold uppercase">16y • France • RB</p>
+</div>
+</div>
+<div class="flex items-center gap-20">
+<div class="w-12 text-center">
+<span class="font-headline font-black text-xl text-on-surface-variant">58</span>
+</div>
+<div class="w-24 text-center">
+<div class="bg-surface-container-highest h-1.5 rounded-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full w-[65%] bg-error shimmer-bar"></div>
+</div>
+<span class="text-[10px] font-black text-error mt-1 block">72-76</span>
+</div>
+<div class="w-32 text-center">
+<span class="text-xs font-bold px-3 py-1 rounded bg-surface-container-highest text-on-surface-variant">Balanced</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-on-primary-fixed transition-colors" title="Promote to First Team">
+<span class="material-symbols-outlined">trending_up</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" title="Change Training Plan">
+<span class="material-symbols-outlined">edit_note</span>
+</button>
+<button class="p-2 rounded-lg bg-error/10 text-error hover:bg-error hover:text-white transition-colors" title="Release">
+<span class="material-symbols-outlined">person_remove</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Training Insight Footer -->
+<div class="mt-12 p-6 rounded-full bg-gradient-to-r from-secondary-container/10 to-transparent border border-outline-variant/10 flex items-center gap-6">
+<div class="p-3 bg-secondary/20 rounded-xl">
+<span class="material-symbols-outlined text-secondary">tips_and_updates</span>
+</div>
+<div>
+<p class="font-bold text-sm">COACH'S INSIGHT</p>
+<p class="text-sm text-on-surface-variant">Mateo Valencia is showing exceptional growth in the "Playmaker" training plan. Consider a first-team debut soon.</p>
+</div>
+</div>
+</main>
+<!-- Contextual FAB - suppressed on this detailed hub screen as per logic -->
+</body></html>
