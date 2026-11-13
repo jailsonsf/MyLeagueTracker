@@ -1,0 +1,17 @@
+import { createContext, useContext } from 'react';
+
+export interface ToastContextValue {
+  showToast: (message: string) => void;
+}
+
+export const ToastContext = createContext<ToastContextValue | null>(null);
+
+export function useToast(): ToastContextValue {
+  const value = useContext(ToastContext);
+
+  if (!value) {
+    throw new Error('useToast precisa estar dentro de ToastProvider');
+  }
+
+  return value;
+}
