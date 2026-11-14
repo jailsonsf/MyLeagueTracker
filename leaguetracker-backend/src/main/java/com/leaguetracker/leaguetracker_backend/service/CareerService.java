@@ -116,7 +116,7 @@ public class CareerService {
 
     List<YouthPlayerDTO> youthSquad = youthPlayerService.findAllBySquad(career.getSquad().getId(), currentUser);
 
-    return new CareerDashboardDTO(careerInfo, principalSquad, youthSquad);
+    return new CareerDashboardDTO(careerInfo, career.getSquad().getId(), principalSquad, youthSquad);
   }
 
   private SquadPlayerDTO convertToSquadDTO(SquadPlayer player) {

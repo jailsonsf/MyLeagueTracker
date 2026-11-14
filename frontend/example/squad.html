@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#ffffff",
+              "secondary-container": "#532f9b",
+              "error": "#ff7351",
+              "on-tertiary-container": "#004d57",
+              "primary-fixed": "#a2f31f",
+              "surface-container-lowest": "#000000",
+              "background": "#0e0e0e",
+              "surface-container-high": "#20201f",
+              "secondary-dim": "#ad8afb",
+              "inverse-primary": "#436a00",
+              "primary": "#bcff5f",
+              "on-secondary-container": "#dac8ff",
+              "on-tertiary-fixed-variant": "#005762",
+              "inverse-on-surface": "#565555",
+              "tertiary-container": "#00e3fd",
+              "surface-variant": "#262626",
+              "on-surface-variant": "#adaaaa",
+              "tertiary-dim": "#00d4ec",
+              "on-secondary-fixed-variant": "#5d3aa6",
+              "error-container": "#b92902",
+              "on-error-container": "#ffd2c8",
+              "tertiary-fixed-dim": "#00d4ec",
+              "outline": "#767575",
+              "secondary-fixed-dim": "#cfb9ff",
+              "on-primary": "#3d6100",
+              "secondary-fixed": "#dbc9ff",
+              "primary-container": "#a2f31f",
+              "surface-container-low": "#131313",
+              "on-secondary": "#2c006d",
+              "on-background": "#ffffff",
+              "on-error": "#450900",
+              "primary-fixed-dim": "#95e400",
+              "on-primary-fixed": "#294300",
+              "error-dim": "#d53d18",
+              "on-tertiary-fixed": "#003840",
+              "surface-dim": "#0e0e0e",
+              "surface-tint": "#bcff5f",
+              "on-primary-container": "#365700",
+              "on-tertiary": "#005762",
+              "outline-variant": "#484847",
+              "tertiary": "#81ecff",
+              "surface-container": "#1a1a1a",
+              "surface": "#0e0e0e",
+              "tertiary-fixed": "#00e3fd",
+              "surface-container-highest": "#262626",
+              "surface-bright": "#2c2c2c",
+              "on-primary-fixed-variant": "#3d6200",
+              "on-secondary-fixed": "#401788",
+              "primary-dim": "#95e400",
+              "secondary": "#af8dfe",
+              "inverse-surface": "#fcf9f8"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .stats-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(188, 255, 95, 0.1), transparent);
+            background-size: 200% 100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<header class="bg-[#0e0e0e] fixed top-0 left-0 right-0 z-50 shadow-[0_40px_40px_-15px_rgba(175,141,254,0.06)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black uppercase tracking-tighter text-white">REAL MADRID C.F.</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-gray-400 font-medium hover:text-white transition-all duration-300 ease-in-out" href="#">SAVE: GALACTICOS_25</a>
+<a class="text-gray-400 font-medium hover:text-white transition-all duration-300 ease-in-out" href="#">JULY 15, 2024</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors scale-95 active:scale-90">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors scale-95 active:scale-90">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-xl overflow-hidden bg-surface-container-highest border border-outline-variant/20">
+<img alt="Club Crest" class="w-full h-full object-cover" data-alt="Official crest of Real Madrid Football Club with intricate gold and blue details on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICfgscrCbyt-owVgsiT8GIyvl5qhQuB0FieDz9CL71B-6akF8YJGaBsdXB8elkm6qxg7RUtbE4Atv4gLuCwpA1H0mVMpfz1Wh3lrsxZgKBTbpI7KNdCLTeGLaOG5pk3hNPIAg8F05MVbJd5_kKw2XTk010N1Yd3S9RsHws6XquksLSaAQlN9THmQkUbOamHLGMVaNpIhe3L57T-gYDbA1LZ3Sd0vqLBts6y10ID-N-riEbYH7DkyqOhzr_IwjiiH-PZ-qR3dK9Jnj"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#0e0e0e] pt-24 pb-8 flex flex-col z-40">
+<div class="px-6 mb-10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-secondary-container/20">
+<img alt="Manager Portrait" class="w-full h-full object-cover" data-alt="Professional portrait of Carlo Ancelotti wearing a sleek black suit in a high-end sports facility setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByFtKa1IaUzW3GDXcgLcw9K0LDATYdp4gFFwUh3h-apCYqCUrUlTGa3QDs0ast9yp3HLKhKYy1lf0Q8NCHRUk1Rl2RvryI-Vssq5bU3a6LwsF0LDlPbAVvT_bme_v9TGlXJsF2fjEAhEFouzaeF4Knxdz4J9qfJT9lr8PRXNftrfEy42RT9Y0Bt18cc1-zhMzY2yrY38iRDMXUgEHa8nLkBiLDqHQ7_XsueydTgzmDHhq8u3It7LqxOvX_-Oro0jwXtRejJhtEr8nf"/>
+</div>
+<div>
+<h3 class="font-headline text-sm font-bold tracking-tight">CARLO ANCELOTTI</h3>
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Manager</p>
+</div>
+</div>
+<nav class="flex-grow flex flex-col gap-1">
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label text-sm uppercase font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label text-sm uppercase font-semibold">Squad</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label text-sm uppercase font-semibold">Youth Academy</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-label text-sm uppercase font-semibold">Transfers</span>
+</a>
+<a class="flex items-center gap-4 bg-[#1a1a1a] text-[#bcff5f] border-l-4 border-[#bcff5f] px-6 py-4 w-full cubic-bezier(0.4, 0, 0.2, 1) duration-300" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label text-sm uppercase font-semibold">Stats</span>
+</a>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label text-sm uppercase font-semibold">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-4 bg-primary text-on-primary-fixed font-headline font-bold text-xs tracking-widest uppercase rounded-lg hover:shadow-[0_0_20px_rgba(188,255,95,0.3)] transition-all duration-300 scale-95 active:scale-90">
+                ADVANCE CALENDAR
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 pt-24 min-h-screen px-10 pb-12">
+<header class="flex justify-between items-end mb-12">
+<div>
+<h1 class="font-headline text-5xl font-black tracking-tighter text-on-surface mb-2">PLAYER STATISTICS</h1>
+<p class="text-on-surface-variant font-medium">SEASON 2024/25 PERFORMANCE ANALYTICS</p>
+</div>
+<div class="flex gap-4">
+<div class="flex bg-surface-container-low p-1 rounded-xl">
+<button class="px-6 py-2 bg-primary text-on-primary-fixed rounded-lg text-xs font-bold uppercase tracking-wider">ALL COMPETITIONS</button>
+<button class="px-6 py-2 text-on-surface-variant hover:text-on-surface text-xs font-bold uppercase tracking-wider transition-colors">LA LIGA</button>
+<button class="px-6 py-2 text-on-surface-variant hover:text-on-surface text-xs font-bold uppercase tracking-wider transition-colors">CHAMPIONS LEAGUE</button>
+</div>
+</div>
+</header>
+<!-- Stats Grid & Filters -->
+<div class="grid grid-cols-12 gap-10">
+<!-- Filter Bar -->
+<div class="col-span-12 flex items-center justify-between bg-surface-container-low px-8 py-6 rounded-2xl border-l-4 border-secondary shadow-[0_40px_40px_-15px_rgba(175,141,254,0.06)]">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">filter_list</span>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Sort By:</span>
+</div>
+<div class="flex gap-8">
+<button class="text-sm font-bold text-primary flex items-center gap-2 group">
+                            GOALS <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="text-sm font-bold text-on-surface-variant hover:text-on-surface transition-colors">ASSISTS</button>
+<button class="text-sm font-bold text-on-surface-variant hover:text-on-surface transition-colors">RATING</button>
+<button class="text-sm font-bold text-on-surface-variant hover:text-on-surface transition-colors">GAMES</button>
+</div>
+</div>
+<div class="relative w-72">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl pl-12 pr-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 placeholder:text-on-surface-variant/50" placeholder="Search player..." type="text"/>
+</div>
+</div>
+<!-- Main Table Card -->
+<div class="col-span-12 bg-surface-container-low rounded-2xl overflow-hidden shadow-2xl">
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-0">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Rank</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Player Name</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">GP</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">Goals</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">Assists</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">CS</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">YC</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-center">RC</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant text-right">Avg Rating</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Row 1: High Performance -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-6 font-headline font-black text-2xl text-on-surface-variant/30">01</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-lg rounded-full"></div>
+<img alt="Vinícius Júnior" class="relative w-12 h-12 rounded-xl object-cover border-2 border-primary/50" data-alt="Close-up profile of Vinícius Júnior with a determined expression, stadium bokeh background, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB54MRpqgwyS9vFNDj5kGjYhl0ZmXoL_N9lFT9TEDp6ayVYHVvZ5mSd6GSF8Fpa2sfB8RkHikyB_RhPC01rs4tn6Z7Z2eIIhuL56WTuTn8tyGTN0YD8ppEDaNl9rPAPIsw_Q_cRgXnQtQ6f_N_rprnXvLHz5KfScsWjD4deuPXRRcMtvDmWKJ_1F1Yp2wdIYznOwCcErlazkdQBXZFrgZMrcYl3ckGsyf9vgIVNhz77XrnClmBjKnHCR9vFf6g7NxKbLe9gzv7SNVsC"/>
+</div>
+<div>
+<p class="font-headline font-bold text-lg leading-none mb-1">VINÍCIUS JÚNIOR</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Forward • Brazil</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-bold">32</td>
+<td class="px-8 py-6 text-center font-headline font-black text-xl text-primary drop-shadow-[0_0_8px_rgba(188,255,95,0.4)]">24</td>
+<td class="px-8 py-6 text-center font-bold">12</td>
+<td class="px-8 py-6 text-center text-on-surface-variant">—</td>
+<td class="px-8 py-6 text-center">
+<span class="inline-block w-4 h-6 bg-yellow-400 rounded-sm"></span>
+<span class="ml-2 font-bold">4</span>
+</td>
+<td class="px-8 py-6 text-center font-bold">0</td>
+<td class="px-8 py-6 text-right">
+<span class="inline-block bg-primary text-on-primary-fixed px-3 py-1 rounded-md font-headline font-bold text-lg">8.1</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-6 font-headline font-black text-2xl text-on-surface-variant/30">02</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container-highest border border-outline-variant/20">
+<img alt="Jude Bellingham" class="w-full h-full object-cover" data-alt="Jude Bellingham in action portrait, high-contrast lighting highlighting athletic features, professional sports photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmIuhxstO5Zh9hiHNQddC9y2CYnH8PatuLhy6DWFOSg15RmKhDfBqxVNoWU6YZGMRiWGRY304FyqOF2o-0hUJAQQ-sRlFWpTcVemd3U6Ba_Y40cw5-baOwttzJO_N8ydIb81f5u1-oGrBueDvOQKP5PkRRtOmJBbejUE-ofM88u7KF2eIUxgCcBznEZc8nhm4a58IrWsv6lj4g60IXc6ZRyITkrnlNaEbIxwWi1AB3clZftc_TJPBVSe0XVvzVnWMc3PqOQJAc-q05"/>
+</div>
+<div>
+<p class="font-headline font-bold text-lg leading-none mb-1">JUDE BELLINGHAM</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Midfielder • England</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-bold">30</td>
+<td class="px-8 py-6 text-center font-headline font-black text-xl">18</td>
+<td class="px-8 py-6 text-center font-headline font-black text-xl text-primary drop-shadow-[0_0_8px_rgba(188,255,95,0.4)]">15</td>
+<td class="px-8 py-6 text-center text-on-surface-variant">—</td>
+<td class="px-8 py-6 text-center">
+<span class="inline-block w-4 h-6 bg-yellow-400 rounded-sm"></span>
+<span class="ml-2 font-bold">2</span>
+</td>
+<td class="px-8 py-6 text-center font-bold">1</td>
+<td class="px-8 py-6 text-right">
+<span class="inline-block bg-surface-container-highest text-on-surface px-3 py-1 rounded-md font-headline font-bold text-lg">7.9</span>
+</td>
+</tr>
+<!-- Row 3: Goalkeeper -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-6 font-headline font-black text-2xl text-on-surface-variant/30">03</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container-highest border border-outline-variant/20">
+<img alt="Thibaut Courtois" class="w-full h-full object-cover" data-alt="Thibaut Courtois goalkeeper portrait, wearing neon jersey, focused gaze, dynamic shadow play, high-resolution analytical UI feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3XNSALqHLNSa1I6gp6zpGF-_xeMcucqwed6F_ifdwjMXCggArg7fohvLv1NDwy64eoBMIxQZXk9H4QbRAv6RBZt5KqhMUJARCJL3PSW9NuYaWWip4zous0W22LkeBOYQUvMdjrHrJq0zd89bcjb8ciRXIIRbdSNffl2gL_QLS-P-_d1dW2BZutAyNcOG5GIihgK7YQUqtkYv_h2EvU84eVlfT_hWYy-9new5Woo4rc21ittm-dl9gW6S73zkENXUkI2KLolI3-dD5"/>
+</div>
+<div>
+<p class="font-headline font-bold text-lg leading-none mb-1">THIBAUT COURTOIS</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Goalkeeper • Belgium</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-bold">34</td>
+<td class="px-8 py-6 text-center font-bold">0</td>
+<td class="px-8 py-6 text-center font-bold">0</td>
+<td class="px-8 py-6 text-center font-headline font-black text-xl text-primary drop-shadow-[0_0_8px_rgba(188,255,95,0.4)]">16</td>
+<td class="px-8 py-6 text-center">
+<span class="inline-block w-4 h-6 bg-yellow-400 rounded-sm"></span>
+<span class="ml-2 font-bold">1</span>
+</td>
+<td class="px-8 py-6 text-center font-bold">0</td>
+<td class="px-8 py-6 text-right">
+<span class="inline-block bg-surface-container-highest text-on-surface px-3 py-1 rounded-md font-headline font-bold text-lg">7.5</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-8 py-6 font-headline font-black text-2xl text-on-surface-variant/30">04</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container-highest border border-outline-variant/20">
+<img alt="Federico Valverde" class="w-full h-full object-cover" data-alt="Federico Valverde running on the pitch, intense action shot, sweat and motion blur, professional editorial football photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYkTCjlhKHZDjnaUcgooXW_fummEwPD3fHwd66vkVAjcpiAEHtIP0iC7Wi6tELqdtFnNlL9u5TfQ1Id3pUWQJlFc6oV7L3jSOogeiy3YMcKMq8X0oeP3oMJnhE8kt9fLtTx7cERNzdfZA2PM4hoE2gBsCaXGrScygEV2sLyFaX3l0lRu9sW9dylm1jDfWOJH3MenvgEg70LxRQb9gq1_NGOT8V4ZGUzw6x20U42AAaldNX_ucjeW1Z49chxwl71oue2aN_esIuidN4"/>
+</div>
+<div>
+<p class="font-headline font-bold text-lg leading-none mb-1">FEDERICO VALVERDE</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Midfielder • Uruguay</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-bold">33</td>
+<td class="px-8 py-6 text-center font-bold text-lg">7</td>
+<td class="px-8 py-6 text-center font-bold text-lg">11</td>
+<td class="px-8 py-6 text-center text-on-surface-variant">—</td>
+<td class="px-8 py-6 text-center">
+<span class="inline-block w-4 h-6 bg-yellow-400 rounded-sm"></span>
+<span class="ml-2 font-bold">6</span>
+</td>
+<td class="px-8 py-6 text-center font-bold">0</td>
+<td class="px-8 py-6 text-right">
+<span class="inline-block bg-surface-container-highest text-on-surface px-3 py-1 rounded-md font-headline font-bold text-lg">7.4</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Analytical Sidebar Widgets -->
+<div class="col-span-12 lg:col-span-4 space-y-10 hidden">
+<!-- Top Scorer Spotlight -->
+<div class="bg-surface-container-low p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary text-4xl opacity-20">workspace_premium</span>
+</div>
+<h4 class="font-headline font-bold text-xs uppercase tracking-widest text-on-surface-variant mb-6">GOLDEN BOOT RACE</h4>
+<div class="flex items-end gap-6 mb-6">
+<img alt="Vinicius" class="w-24 h-24 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Vinicius Junior celebrating a goal, passion and energy, stadium lights flare in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBex5c5wrmS4yn_SOXFXB6MQ1WOUUkZCcaXCkYMTNk4IJgl-yHjzSytM4Ub_3JjoC-0UP1_OM3b8Xf34GC4H4Ln3yHK9C39aTJGrijtis0GIwnGHimk4A3uxi6aowTVk7oiN6wVepSVRC7yWTeahxNjs_1ga4SHBEsZY3zg4xMyx1qYBV3jVYX_Wn1RJBSuoO-s_Nz-ym09OLQO-QLqQwcBHUJFCdcUraLnXhsOqIDYHxY6MsFcPJYpi3ep6AHCqMRS3zmHUteNwLxQ"/>
+<div>
+<p class="font-headline font-black text-3xl leading-none">VINÍCIUS</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-primary font-headline font-black text-4xl">24</span>
+<span class="text-xs font-bold text-on-surface-variant uppercase">Goals Scored</span>
+</div>
+</div>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%] stats-shimmer"></div>
+</div>
+<p class="mt-4 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">+4 FROM PREVIOUS MONTH</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on Stats page per suppression rule) -->
+</body></html>

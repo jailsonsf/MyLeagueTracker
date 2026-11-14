@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real Madrid C.F. - Career Mode Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#ffffff",
+              "secondary-container": "#532f9b",
+              "error": "#ff7351",
+              "on-tertiary-container": "#004d57",
+              "primary-fixed": "#a2f31f",
+              "surface-container-lowest": "#000000",
+              "background": "#0e0e0e",
+              "surface-container-high": "#20201f",
+              "secondary-dim": "#ad8afb",
+              "inverse-primary": "#436a00",
+              "primary": "#bcff5f",
+              "on-secondary-container": "#dac8ff",
+              "on-tertiary-fixed-variant": "#005762",
+              "inverse-on-surface": "#565555",
+              "tertiary-container": "#00e3fd",
+              "surface-variant": "#262626",
+              "on-surface-variant": "#adaaaa",
+              "tertiary-dim": "#00d4ec",
+              "on-secondary-fixed-variant": "#5d3aa6",
+              "error-container": "#b92902",
+              "on-error-container": "#ffd2c8",
+              "tertiary-fixed-dim": "#00d4ec",
+              "outline": "#767575",
+              "secondary-fixed-dim": "#cfb9ff",
+              "on-primary": "#3d6100",
+              "secondary-fixed": "#dbc9ff",
+              "primary-container": "#a2f31f",
+              "surface-container-low": "#131313",
+              "on-secondary": "#2c006d",
+              "on-background": "#ffffff",
+              "on-error": "#450900",
+              "primary-fixed-dim": "#95e400",
+              "on-primary-fixed": "#294300",
+              "error-dim": "#d53d18",
+              "on-tertiary-fixed": "#003840",
+              "surface-dim": "#0e0e0e",
+              "surface-tint": "#bcff5f",
+              "on-primary-container": "#365700",
+              "on-tertiary": "#005762",
+              "outline-variant": "#484847",
+              "tertiary": "#81ecff",
+              "surface-container": "#1a1a1a",
+              "surface": "#0e0e0e",
+              "tertiary-fixed": "#00e3fd",
+              "surface-container-highest": "#262626",
+              "surface-bright": "#2c2c2c",
+              "on-primary-fixed-variant": "#3d6200",
+              "on-secondary-fixed": "#401788",
+              "primary-dim": "#95e400",
+              "secondary": "#af8dfe",
+              "inverse-surface": "#fcf9f8"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(38, 38, 38, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .shimmer-bar {
+            background: linear-gradient(90deg, rgba(188,255,95,0) 0%, rgba(188,255,95,0.4) 50%, rgba(188,255,95,0) 100%);
+            background-size: 200% 100%;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: white;
+            font-family: 'Manrope', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Epilogue', sans-serif;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-[#0e0e0e] dark:bg-[#0e0e0e] fixed top-0 left-0 right-0 z-50 shadow-[0_40px_40px_-15px_rgba(175,141,254,0.06)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black uppercase tracking-tighter text-white dark:text-white">REAL MADRID C.F.</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-gray-400 font-medium hover:text-white transition-all duration-300 ease-in-out" href="#">SAVE: GALACTICOS_25</a>
+<a class="text-gray-400 font-medium hover:text-white transition-all duration-300 ease-in-out" href="#">JULY 15, 2024</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-gray-400 hover:bg-[#bcff5f]/10 transition-all duration-300 rounded-full active:scale-90">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-gray-400 hover:bg-[#bcff5f]/10 transition-all duration-300 rounded-full active:scale-90">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/30">
+<img alt="Club Crest" data-alt="Close-up of a professional football club crest embroidery on a dark jersey with premium texture and subtle lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoyqyXGTXk_gLPLYzJ8eWryYYOcgwFr0E5Eh6AvVC5qWGwzexxxk8SjRXHKcYIhDfprNDhHQYo7z5uGGnn3-uaxArmEo7B2L_9i45CU4L_cev09FrXQvTorE3zprMFHXL7xOpRwLv3kwPl-IbMvSklCgT_-JsQz_Km5rZzKa2hTsraGdTvT5YNTuMg3FU98iqNBZMGr6wc1c9prDyMnTPHynRnAYcmHtjxd4jZnKTvrFzz0LHzrdn44cojYtlHA6ewHclVLausBgS7"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex pt-16">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#0e0e0e] flex flex-col pt-20 pb-8 z-40 hidden md:flex">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Manager Portrait" data-alt="Professional headshot of a mature football manager in a sleek black suit, confident expression, dramatic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8oIp84UMSc-GWF0I9RVYtW0M34K6vjYDS6un2awvObfE7IaBF86VpGFZNdgevuPZKv2zji-bfqfsNALdp-nBauphrXULxqcFz4Y55OE9n0nTInsb9RXqOmBi7Eycg_ixTsVicFoWn8VMH-X58DAbJX5112NQt2u9dxrQeGD-_OnaFdW94f6rHogunmWjoDAflahd_iC5CCdwvP_mpM-dsB9-dMk8qImASeCzN3cpdweHIqbsExXo85oFRhZnAU_J715Hb8Bc_m3uy"/>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white uppercase tracking-wider">CARLO ANCELOTTI</h3>
+<p class="text-[10px] text-gray-500 font-bold uppercase">Manager</p>
+</div>
+</div>
+<nav class="flex-grow">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-4 bg-[#1a1a1a] text-[#bcff5f] border-l-4 border-[#bcff5f] px-6 py-4 w-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-xs font-bold uppercase tracking-widest">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-xs font-bold uppercase tracking-widest group-hover:text-white">Squad</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="text-xs font-bold uppercase tracking-widest group-hover:text-white">Youth Academy</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="text-xs font-bold uppercase tracking-widest group-hover:text-white">Transfers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="text-xs font-bold uppercase tracking-widest group-hover:text-white">Stats</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-gray-500 px-6 py-4 w-full hover:text-white hover:bg-[#1a1a1a] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-xs font-bold uppercase tracking-widest group-hover:text-white">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-4 bg-[#bcff5f] text-[#294300] font-black text-xs tracking-widest uppercase rounded-lg hover:shadow-[0_0_20px_rgba(188,255,95,0.3)] transition-all duration-300 active:scale-95">
+                    ADVANCE CALENDAR
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-grow md:ml-64 p-8 min-h-screen bg-surface">
+<header class="mb-12">
+<h1 class="text-5xl font-black italic tracking-tighter text-on-surface mb-2 uppercase">Career Mode</h1>
+<p class="text-on-surface-variant font-medium tracking-wide">Select a save game to continue your journey or start a new legacy.</p>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
+<!-- Create New Career Card -->
+<button class="group relative h-[420px] rounded-xl overflow-hidden border-2 border-dashed border-outline-variant hover:border-primary transition-all duration-500 flex flex-col items-center justify-center bg-surface-container-low active:scale-95">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl text-on-surface group-hover:text-on-primary transition-colors duration-500" data-icon="add">add</span>
+</div>
+<h2 class="text-xl font-black uppercase tracking-widest text-on-surface">Create New Career</h2>
+<p class="mt-2 text-on-surface-variant font-medium">Start from scratch</p>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+</button>
+<!-- Save Card 1: Real Madrid -->
+<div class="group relative h-[420px] rounded-xl overflow-hidden bg-surface-container-low transition-all duration-500 hover:translate-y-[-8px]">
+<div class="absolute inset-0 z-0">
+<img alt="Santiago Bernabéu Stadium" class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" data-alt="Cinematic wide shot of the Santiago Bernabéu stadium at night, glowing lights, dramatic shadows, professional photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkwFEC3TcrdhfGCqkPSxhHZQAhDKJXU8-LJDRmm-4FTCcOU4va07Ztr4jJyKV2bfFYz4PdsW-bXzRlenIoWJK5bRgMdscRhQLjS4J4omKiW8AMGdaEFibLniLFDff1ld5qrzB9RBrM8T-k-3YTyONjuMhp27cmyfNAYtv-HnnlHFF35bzH1chi4xcTbFuaTQAZ3jcMzjP_J2XktAjMm3OH0q-zuBp-cj83JqhGY140zLuEuAoJZAsWTFIx3B5Vlnzap_xoUm0Q7m-9"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/60 to-transparent"></div>
+</div>
+<div class="relative z-10 p-8 h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl p-2 flex items-center justify-center">
+<img alt="Real Madrid Crest" data-alt="Real Madrid C.F. official football club crest detail, vibrant colors, sharp focus, technical apparel background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDt6rh_V6iMtfPNaDEPKREtZIt_KupeQOrKIlnM47__DsrB8c6Vize_ppQbuEJjKmBQciEiETygHqNaVHf67AXYELHsaL4pY8mTbkvroJxVHPERmFjiUwIZ9pWsaIs8yKF3r-3JJqCdesrd2m6DKijqi0AjXzLodVLFeyNYME8tXBYJ8bGUcT0wk5VRQBTHgn16z6tO9GFQ2FWuFAyPbHychSLpyrUFDdAKWRvOa59aU6BmpNNzwaex1K3HAWFJFEGuLZGcYDItlSX"/>
+</div>
+<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-black uppercase tracking-tighter rounded-full">EA FC 25</span>
+</div>
+<div>
+<h2 class="text-3xl font-black italic tracking-tighter text-white uppercase mb-1">REAL MADRID</h2>
+<p class="text-primary font-bold text-sm tracking-widest uppercase mb-4">Carlo Ancelotti</p>
+<div class="flex items-center gap-2 text-on-surface-variant text-xs font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Last Saved: 14 July 2024</span>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 bg-white/10 hover:bg-primary hover:text-on-primary backdrop-blur-md font-bold uppercase text-xs tracking-widest transition-all duration-300 rounded-lg">Continue Career</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Save Card 2: Arsenal -->
+<div class="group relative h-[420px] rounded-xl overflow-hidden bg-surface-container-low transition-all duration-500 hover:translate-y-[-8px]">
+<div class="absolute inset-0 z-0">
+<img alt="Emirates Stadium" class="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700" data-alt="Atmospheric interior of a modern football stadium, red seating, sunset lighting through the roof, epic sports vibe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnW8KFacgNZ944Yo89MoQEIZoV_nCIxpPOf6rXORpySLrxrRLneaHMvt0fULc8_RJEjL9rBckzinGFOtQ4Oqn9oU45x5IAf9PNTwdf4AJS2vZvuxJsZX9NJUXy8d_DNlyMRZMBwuRm6zf-SZ1wErPHQPdx8DdSWGwRjktfvsNoyAv7UC8-OPDJRp446A4vJYlTSwkumTrZXwSB5OssEhCk_sBsQ1txiULSwwiJR5jLkXzr0YqdrrLi0A6cCHc4wTxk9g9QWC7hdBAD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/60 to-transparent"></div>
+</div>
+<div class="relative z-10 p-8 h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl p-2 flex items-center justify-center">
+<img alt="Arsenal Crest" data-alt="Abstract vibrant sports branding, deep red and white patterns, high-end graphic design for a sports club" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSR_p24W2kFFh9-IxiCUYkfgY6ixl68O0i_8LNNUtM2Nnl7kfaHw5Xw7WW7eHZ2O8cvm8TSLuzfojAzKk8PK4LfMyy8RGDc72lqmAVpsyJdzfCpMqshVlsYM8KedfgYMJYR1klB_RLX3M7eejzQYfxCSXZYl1VIMvTDzScf7RhU3yjWVfbV9ZZDIPJ-AuoBZ7H8qGUEoeE84rPFwCO-r5qdt0KDPMc7NXZZRi_fuCtxrjkKRq3HxTcPX327KmcQfWhI_x-6VqKhSwm"/>
+</div>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface text-[10px] font-black uppercase tracking-tighter rounded-full">EA FC 24</span>
+</div>
+<div>
+<h2 class="text-3xl font-black italic tracking-tighter text-white uppercase mb-1">ARSENAL</h2>
+<p class="text-secondary font-bold text-sm tracking-widest uppercase mb-4">Mikel Arteta</p>
+<div class="flex items-center gap-2 text-on-surface-variant text-xs font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Last Saved: 02 June 2024</span>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 bg-white/10 hover:bg-secondary hover:text-on-secondary backdrop-blur-md font-bold uppercase text-xs tracking-widest transition-all duration-300 rounded-lg">Continue Career</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Save Card 3: Dortmund -->
+<div class="group relative h-[420px] rounded-xl overflow-hidden bg-surface-container-low transition-all duration-500 hover:translate-y-[-8px]">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-black/80"></div>
+<img alt="Signal Iduna Park" class="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700" data-alt="Dortmund Signal Iduna Park yellow wall during a match, massive crowd, high intensity, yellow smoke and dramatic cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOJ7WPoVfOTpV5xnqTxIah5VeHKo2J800gywxNoBGhKZ2E2QjuaCmnIDnEYWX1TMg_O6gcmIni98j5CRxFvOYAXxRHxr2DzcWo7gF-PDJJlnPlAuCLYLiXSWSFVIfxy2jatb2PoHBftXM175jLizcwg_cxAr-yNh-y1Q8rDQqRjuWTVGndBHiI_17j4Ur3cp-w0KaMj_l330jBX6SHuLVaLTKNjt4MT5JR4hjWNcocZ4PFE4Q3IOvw7vRIRsWcLZ-r_B_AhQwfToLz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/60 to-transparent"></div>
+</div>
+<div class="relative z-10 p-8 h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl p-2 flex items-center justify-center">
+<div class="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center font-black text-black">BVB</div>
+</div>
+<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-black uppercase tracking-tighter rounded-full">EA FC 25</span>
+</div>
+<div>
+<h2 class="text-3xl font-black italic tracking-tighter text-white uppercase mb-1">DORTMUND</h2>
+<p class="text-primary font-bold text-sm tracking-widest uppercase mb-4">Nuri Şahin</p>
+<div class="flex items-center gap-2 text-on-surface-variant text-xs font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Last Saved: 10 July 2024</span>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 bg-white/10 hover:bg-primary hover:text-on-primary backdrop-blur-md font-bold uppercase text-xs tracking-widest transition-all duration-300 rounded-lg">Continue Career</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- News/Updates Section - Asymmetric Bento Grid Item -->
+<section class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 glass-card rounded-2xl p-8 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8">
+<span class="text-[120px] font-black italic text-white/5 absolute -right-4 -top-10 select-none">UPDATE</span>
+</div>
+<h3 class="text-2xl font-black uppercase tracking-widest text-on-surface mb-6">Patch Notes v1.0.4</h3>
+<div class="space-y-4 max-w-xl relative z-10">
+<div class="flex gap-4 items-start">
+<div class="w-1 h-6 bg-primary rounded-full mt-1"></div>
+<p class="text-on-surface-variant text-sm font-medium">Optimized scouting algorithms for South American youth prospects.</p>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-1 h-6 bg-primary rounded-full mt-1"></div>
+<p class="text-on-surface-variant text-sm font-medium">Fixed contract negotiation logic for players with high loyalty traits.</p>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-1 h-6 bg-primary rounded-full mt-1"></div>
+<p class="text-on-surface-variant text-sm font-medium">Enhanced tactical realism during Champions League knockout stages.</p>
+</div>
+</div>
+<button class="mt-8 px-6 py-3 bg-primary/10 text-primary font-bold uppercase text-xs tracking-widest rounded-lg border border-primary/20 hover:bg-primary hover:text-on-primary transition-all duration-300">Read Full Notes</button>
+</div>
+<div class="bg-surface-container-highest rounded-2xl p-8 flex flex-col justify-center items-center text-center border border-outline-variant/10 group overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary-container/20 to-transparent"></div>
+<span class="material-symbols-outlined text-5xl text-secondary mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="text-xl font-black uppercase tracking-wider text-on-surface mb-2">Tactical Guide</h3>
+<p class="text-on-surface-variant text-sm mb-6">Master the new "False 9" dynamics in FC 25.</p>
+<button class="px-6 py-2 border-2 border-secondary text-secondary font-bold uppercase text-xs tracking-widest rounded-lg hover:bg-secondary hover:text-on-secondary transition-all duration-300 relative z-10">Watch Tutorial</button>
+</div>
+</section>
+</main>
+</div>
+</body></html>
